@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/security/espnow_security';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Utils API" href="../utils/index.html" />
+    <link rel="prev" title="Security Handshake API" href="espnow_security_handshake.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debug/index.html">Debug API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota/index.html">OTA API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../provisioning/index.html">Provisioning API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Security API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="espnow_security_handshake.html">Security Handshake API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Security API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/index.html">Utils API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">Security API</a> &raquo;</li>
+      <li>Security API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/security/espnow_security.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="security-api">
+<h1>Security API<a class="headerlink" href="#security-api" title="Permalink to this headline"></a></h1>
+<p>Security layer related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/security/include/espnow_security.h">src/security/include/espnow_security.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415espnow_sec_initP12espnow_sec_t">
+<span id="_CPPv315espnow_sec_initP12espnow_sec_t"></span><span id="_CPPv215espnow_sec_initP12espnow_sec_t"></span><span id="espnow_sec_init__espnow_sec_tP"></span><span class="target" id="espnow__security_8h_1accbf76d2b120ee4e43003ad1472c2b05"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412espnow_sec_t" title="espnow_sec_t"><span class="n"><span class="pre">espnow_sec_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415espnow_sec_initP12espnow_sec_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initialize the specified security info. </p>
+<p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sec</strong> – <strong>[in]</strong> the security info to initialize. This must not be NULL.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_sec_deinitP12espnow_sec_t">
+<span id="_CPPv317espnow_sec_deinitP12espnow_sec_t"></span><span id="_CPPv217espnow_sec_deinitP12espnow_sec_t"></span><span id="espnow_sec_deinit__espnow_sec_tP"></span><span class="target" id="espnow__security_8h_1a7533547df72bb171c49284628a178174"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_deinit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412espnow_sec_t" title="espnow_sec_t"><span class="n"><span class="pre">espnow_sec_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417espnow_sec_deinitP12espnow_sec_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Clear the specified security info. </p>
+<p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sec</strong> – <strong>[in]</strong> the security info to clear. This must not be NULL.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_sec_setkeyP12espnow_sec_tA11APP_KEY_LEN_7uint8_t">
+<span id="_CPPv317espnow_sec_setkeyP12espnow_sec_tA11APP_KEY_LEN_7uint8_t"></span><span id="_CPPv217espnow_sec_setkeyP12espnow_sec_tAAPP_KEY_LEN_7uint8_t"></span><span id="espnow_sec_setkey__espnow_sec_tP.uint8_tA"></span><span class="target" id="espnow__security_8h_1ad081d6044fc0cedbb0c06e2c68dad306"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_setkey</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412espnow_sec_t" title="espnow_sec_t"><span class="n"><span class="pre">espnow_sec_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sec</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">APP_KEY_LEN</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417espnow_sec_setkeyP12espnow_sec_tA11APP_KEY_LEN_7uint8_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the security key info. </p>
+<p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sec</strong> – <strong>[in]</strong> the security info to set. </p></li>
+<li><p><strong>app_key</strong> – <strong>[in]</strong> raw key info used to set encryption key and iv.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_sec_auth_encryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t">
+<span id="_CPPv323espnow_sec_auth_encryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t"></span><span id="_CPPv223espnow_sec_auth_encryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t"></span><span id="espnow_sec_auth_encrypt__espnow_sec_tP.uint8_tCP.s.uint8_tP.s.sP.s"></span><span class="target" id="espnow__security_8h_1a7530c208d25669a17e838a4d0c7f0ea5"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_auth_encrypt</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412espnow_sec_t" title="espnow_sec_t"><span class="n"><span class="pre">espnow_sec_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sec</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">input</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ilen</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">output</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">output_len</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">olen</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tag_len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423espnow_sec_auth_encryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The authenticated encryption function. Encryption with 128 bit AES-CCM. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the tag will be appended to the ciphertext</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sec</strong> – <strong>[in]</strong> the security info used for encryption. </p></li>
+<li><p><strong>input</strong> – <strong>[in]</strong> the buffer for the input data </p></li>
+<li><p><strong>ilen</strong> – <strong>[in]</strong> the length of the input data </p></li>
+<li><p><strong>output</strong> – <strong>[out]</strong> the buffer for the output data </p></li>
+<li><p><strong>output_len</strong> – <strong>[in]</strong> the length of the output buffer in bytes </p></li>
+<li><p><strong>olen</strong> – <strong>[out]</strong> the actual number of bytes written to the output buffer </p></li>
+<li><p><strong>tag_len</strong> – <strong>[in]</strong> the desired length of the authentication tag</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_sec_auth_decryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t">
+<span id="_CPPv323espnow_sec_auth_decryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t"></span><span id="_CPPv223espnow_sec_auth_decryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t"></span><span id="espnow_sec_auth_decrypt__espnow_sec_tP.uint8_tCP.s.uint8_tP.s.sP.s"></span><span class="target" id="espnow__security_8h_1ab313bae5bac3c1087f1860fac85956d7"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_auth_decrypt</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412espnow_sec_t" title="espnow_sec_t"><span class="n"><span class="pre">espnow_sec_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sec</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">input</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ilen</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">output</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">output_len</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">olen</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tag_len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423espnow_sec_auth_decryptP12espnow_sec_tPK7uint8_t6size_tP7uint8_t6size_tP6size_t6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The authenticated decryption function. Decryption with 128 bit AES-CCM. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the tag must be appended to the ciphertext</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sec</strong> – <strong>[in]</strong> the security info used for encryption. </p></li>
+<li><p><strong>input</strong> – <strong>[in]</strong> the buffer for the input data </p></li>
+<li><p><strong>ilen</strong> – <strong>[in]</strong> the length of the input data </p></li>
+<li><p><strong>output</strong> – <strong>[out]</strong> the buffer for the output data </p></li>
+<li><p><strong>output_len</strong> – <strong>[in]</strong> the length of the output buffer in bytes </p></li>
+<li><p><strong>olen</strong> – <strong>[out]</strong> the actual number of bytes written to the output buffer </p></li>
+<li><p><strong>tag_len</strong> – <strong>[in]</strong> the desired length of the authentication tag</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL _cplusplus </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412espnow_sec_s">
+<span id="_CPPv312espnow_sec_s"></span><span id="_CPPv212espnow_sec_s"></span><span id="espnow_sec_s"></span><span class="target" id="structespnow__sec__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_s</span></span></span><a class="headerlink" href="#_CPPv412espnow_sec_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Struct of security. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12espnow_sec_s5stateE">
+<span id="_CPPv3N12espnow_sec_s5stateE"></span><span id="_CPPv2N12espnow_sec_s5stateE"></span><span id="espnow_sec_s::state__i"></span><span class="target" id="structespnow__sec__s_1ae30461dfce04ef326bd726c8dedc0912"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#_CPPv4N12espnow_sec_s5stateE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>State defined by espnow_sec_state_t </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12espnow_sec_s3keyE">
+<span id="_CPPv3N12espnow_sec_s3keyE"></span><span id="_CPPv2N12espnow_sec_s3keyE"></span><span id="espnow_sec_s::key__uint8_tA"></span><span class="target" id="structespnow__sec__s_1a06b7d0a8a64be7fd30c4a17b4d10dea6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">KEY_LEN</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12espnow_sec_s3keyE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Secret key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12espnow_sec_s2ivE">
+<span id="_CPPv3N12espnow_sec_s2ivE"></span><span id="_CPPv2N12espnow_sec_s2ivE"></span><span id="espnow_sec_s::iv__uint8_tA"></span><span class="target" id="structespnow__sec__s_1ab87ba24ac195f266eb8f924e4d3f6e4c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iv</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">IV_LEN</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12espnow_sec_s2ivE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The initialization vector (nonce) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12espnow_sec_s7key_lenE">
+<span id="_CPPv3N12espnow_sec_s7key_lenE"></span><span id="_CPPv2N12espnow_sec_s7key_lenE"></span><span id="espnow_sec_s::key_len__uint8_t"></span><span class="target" id="structespnow__sec__s_1a37127ac5ae2b1b19dfa401a9083561f8"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key_len</span></span></span><a class="headerlink" href="#_CPPv4N12espnow_sec_s7key_lenE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Secret key length </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12espnow_sec_s6iv_lenE">
+<span id="_CPPv3N12espnow_sec_s6iv_lenE"></span><span id="_CPPv2N12espnow_sec_s6iv_lenE"></span><span id="espnow_sec_s::iv_len__uint8_t"></span><span class="target" id="structespnow__sec__s_1a93ea5083297ef8f4ccce30f5bd098b27"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iv_len</span></span></span><a class="headerlink" href="#_CPPv4N12espnow_sec_s6iv_lenE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The initialization vector (nonce) length </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12espnow_sec_s7tag_lenE">
+<span id="_CPPv3N12espnow_sec_s7tag_lenE"></span><span id="_CPPv2N12espnow_sec_s7tag_lenE"></span><span id="espnow_sec_s::tag_len__uint8_t"></span><span class="target" id="structespnow__sec__s_1a2042194fc69a4df66d929ef9fc72ff49"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tag_len</span></span></span><a class="headerlink" href="#_CPPv4N12espnow_sec_s7tag_lenE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The length of the authentication field </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12espnow_sec_s10cipher_ctxE">
+<span id="_CPPv3N12espnow_sec_s10cipher_ctxE"></span><span id="_CPPv2N12espnow_sec_s10cipher_ctxE"></span><span id="espnow_sec_s::cipher_ctx__voidP"></span><span class="target" id="structespnow__sec__s_1a285dde53ed38df3dd8ac43b912d6a576"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cipher_ctx</span></span></span><a class="headerlink" href="#_CPPv4N12espnow_sec_s10cipher_ctxE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The cipher context </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="macros">
+<h3>Macros<a class="headerlink" href="#macros" title="Permalink to this headline"></a></h3>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.APP_KEY_LEN">
+<span class="target" id="espnow__security_8h_1a5229a8b13123daf54ca0636c1a2409f0"></span><span class="sig-name descname"><span class="n"><span class="pre">APP_KEY_LEN</span></span></span><a class="headerlink" href="#c.APP_KEY_LEN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>&lt; _cplusplus Exchanged key length </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.KEY_LEN">
+<span class="target" id="espnow__security_8h_1a32a183eeadf922d255d06a4e4f2aca66"></span><span class="sig-name descname"><span class="n"><span class="pre">KEY_LEN</span></span></span><a class="headerlink" href="#c.KEY_LEN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Secret key length </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.IV_LEN">
+<span class="target" id="espnow__security_8h_1a35dc4d7d23c1b86227ceb68e6ebc4fc2"></span><span class="sig-name descname"><span class="n"><span class="pre">IV_LEN</span></span></span><a class="headerlink" href="#c.IV_LEN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The initialization vector (nonce) length </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TAG_LEN">
+<span class="target" id="espnow__security_8h_1a415167a842f3b3014a33a23b3cf746a9"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_LEN</span></span></span><a class="headerlink" href="#c.TAG_LEN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The length of the authentication field </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_SEC_PACKET_MAX_SIZE">
+<span class="target" id="espnow__security_8h_1a0de160406a334fe6336cf9f10713d593"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_PACKET_MAX_SIZE</span></span></span><a class="headerlink" href="#c.ESPNOW_SEC_PACKET_MAX_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Maximum length of a single encrypted packet transmitted </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_SEC_OK">
+<span class="target" id="espnow__security_8h_1ac7b56218f3910004eb883319ea934761"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_SEC_OK</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_SEC_OK" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_SEC_FAIL">
+<span class="target" id="espnow__security_8h_1a3f65fd27af08dd488e4b4158593d322c"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_SEC_FAIL</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_SEC_FAIL" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv412espnow_sec_t">
+<span id="_CPPv312espnow_sec_t"></span><span id="_CPPv212espnow_sec_t"></span><span id="espnow_sec_t"></span><span class="target" id="espnow__security_8h_1a877b8ee43e5131c79fadaa713a162066"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412espnow_sec_s" title="espnow_sec_s"><span class="n"><span class="pre">espnow_sec_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_t</span></span></span><a class="headerlink" href="#_CPPv412espnow_sec_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Struct of security. </p>
+</dd></dl>
+
+</section>
+<section id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline"></a></h3>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418espnow_sec_state_t">
+<span id="_CPPv318espnow_sec_state_t"></span><span id="_CPPv218espnow_sec_state_t"></span><span class="target" id="espnow__security_8h_1a17a71a5e071535ac1de4b3e527941597"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_state_t</span></span></span><a class="headerlink" href="#_CPPv418espnow_sec_state_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>State of security. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_sec_state_t21ESPNOW_SEC_UNFINISHEDE">
+<span id="_CPPv3N18espnow_sec_state_t21ESPNOW_SEC_UNFINISHEDE"></span><span id="_CPPv2N18espnow_sec_state_t21ESPNOW_SEC_UNFINISHEDE"></span><span class="target" id="espnow__security_8h_1a17a71a5e071535ac1de4b3e527941597ae64c2573d84652d4ab7d1b8e7a766006"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_UNFINISHED</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_sec_state_t21ESPNOW_SEC_UNFINISHEDE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Security handshake is not finished </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_sec_state_t15ESPNOW_SEC_OVERE">
+<span id="_CPPv3N18espnow_sec_state_t15ESPNOW_SEC_OVERE"></span><span id="_CPPv2N18espnow_sec_state_t15ESPNOW_SEC_OVERE"></span><span class="target" id="espnow__security_8h_1a17a71a5e071535ac1de4b3e527941597a9d6e5dcb2b8f3ced064533436fb6df05"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_OVER</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_sec_state_t15ESPNOW_SEC_OVERE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Security handshake is over and APP key is received </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="espnow_security_handshake.html" class="btn btn-neutral float-left" title="Security Handshake API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../utils/index.html" class="btn btn-neutral float-right" title="Utils API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

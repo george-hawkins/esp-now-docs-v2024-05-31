@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debug LOG API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/debug/espnow_log';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ESPNOW API" href="../espnow/index.html" />
+    <link rel="prev" title="Debug Console API" href="espnow_console.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Debug API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="espnow_cmd.html">Debug CMD API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="espnow_console.html">Debug Console API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Debug LOG API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota/index.html">OTA API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../provisioning/index.html">Provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/index.html">Security API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/index.html">Utils API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">Debug API</a> &raquo;</li>
+      <li>Debug LOG API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/debug/espnow_log.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="debug-log-api">
+<h1>Debug LOG API<a class="headerlink" href="#debug-log-api" title="Permalink to this headline"></a></h1>
+<p>Debug log related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/debug/include/espnow_log.h">src/debug/include/espnow_log.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_log_get_configP19espnow_log_config_t">
+<span id="_CPPv321espnow_log_get_configP19espnow_log_config_t"></span><span id="_CPPv221espnow_log_get_configP19espnow_log_config_t"></span><span id="espnow_log_get_config__espnow_log_config_tP"></span><span class="target" id="espnow__log_8h_1a5f3c53c645dc1d3d59a0d0b090db7b97"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_get_config</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419espnow_log_config_t" title="espnow_log_config_t"><span class="n"><span class="pre">espnow_log_config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421espnow_log_get_configP19espnow_log_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the configuration of the log during wireless debugging. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – <strong>[out]</strong> the configuration of the log</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_log_set_configPK19espnow_log_config_t">
+<span id="_CPPv321espnow_log_set_configPK19espnow_log_config_t"></span><span id="_CPPv221espnow_log_set_configPK19espnow_log_config_t"></span><span id="espnow_log_set_config__espnow_log_config_tCP"></span><span class="target" id="espnow__log_8h_1a5d13b37d53dab8adb2f64132bc17f47a"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_set_config</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_log_config_t" title="espnow_log_config_t"><span class="n"><span class="pre">espnow_log_config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421espnow_log_set_configPK19espnow_log_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the configuration of the log during wireless debugging. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – <strong>[in]</strong> the configuration of the log</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415espnow_log_initPK19espnow_log_config_t">
+<span id="_CPPv315espnow_log_initPK19espnow_log_config_t"></span><span id="_CPPv215espnow_log_initPK19espnow_log_config_t"></span><span id="espnow_log_init__espnow_log_config_tCP"></span><span class="target" id="espnow__log_8h_1a6d4afb9055e0375fefca1df8298b5ef9"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_log_config_t" title="espnow_log_config_t"><span class="n"><span class="pre">espnow_log_config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415espnow_log_initPK19espnow_log_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initialize log debug. </p>
+<p><ul class="simple">
+<li><p>Set log debug configuration</p></li>
+<li><p>Create the log sendinng task</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – <strong>[in]</strong> the configuration of the log</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_log_deinitv">
+<span id="_CPPv317espnow_log_deinitv"></span><span id="_CPPv217espnow_log_deinitv"></span><span id="espnow_log_deinit__void"></span><span class="target" id="espnow__log_8h_1a3c7207c71c32f23cf5ad2712639972ad"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_deinit</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417espnow_log_deinitv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>De-initialize log debug Call this once when done using log debug functions. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_log_flash_readPcP6size_t">
+<span id="_CPPv321espnow_log_flash_readPcP6size_t"></span><span id="_CPPv221espnow_log_flash_readPcP6size_t"></span><span id="espnow_log_flash_read__cP.sP"></span><span class="target" id="espnow__log_8h_1ab26611b098b5fa4abf335802fc831084"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_flash_read</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421espnow_log_flash_readPcP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Read memory log data in flash. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – <strong>[out]</strong> log data read from the flash’s spiffs files </p></li>
+<li><p><strong>size</strong> – <strong>[inout]</strong> size of the read data in bytes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_log_flash_sizev">
+<span id="_CPPv321espnow_log_flash_sizev"></span><span id="_CPPv221espnow_log_flash_sizev"></span><span id="espnow_log_flash_size__void"></span><span class="target" id="espnow__log_8h_1a66ffb211f5b8a247c23461ae8eaa7255"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_flash_size</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421espnow_log_flash_sizev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the size of log stored in flash. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>size _cplusplus </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_log_config_s">
+<span id="_CPPv319espnow_log_config_s"></span><span id="_CPPv219espnow_log_config_s"></span><span id="espnow_log_config_s"></span><span class="target" id="structespnow__log__config__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_config_s</span></span></span><a class="headerlink" href="#_CPPv419espnow_log_config_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Log sending configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_log_config_s14log_level_uartE">
+<span id="_CPPv3N19espnow_log_config_s14log_level_uartE"></span><span id="_CPPv2N19espnow_log_config_s14log_level_uartE"></span><span id="espnow_log_config_s::log_level_uart__esp_log_level_t"></span><span class="target" id="structespnow__log__config__s_1a7bb013abe5ab77c18a6ee7b8fe350de4"></span><span class="n"><span class="pre">esp_log_level_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log_level_uart</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_log_config_s14log_level_uartE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Level of log printed from uart </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_log_config_s15log_level_flashE">
+<span id="_CPPv3N19espnow_log_config_s15log_level_flashE"></span><span id="_CPPv2N19espnow_log_config_s15log_level_flashE"></span><span id="espnow_log_config_s::log_level_flash__esp_log_level_t"></span><span class="target" id="structespnow__log__config__s_1a46e84ca94fa0d3fc1c02d879e10300bb"></span><span class="n"><span class="pre">esp_log_level_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log_level_flash</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_log_config_s15log_level_flashE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Level of log stored in flash </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_log_config_s16log_level_espnowE">
+<span id="_CPPv3N19espnow_log_config_s16log_level_espnowE"></span><span id="_CPPv2N19espnow_log_config_s16log_level_espnowE"></span><span id="espnow_log_config_s::log_level_espnow__esp_log_level_t"></span><span class="target" id="structespnow__log__config__s_1af0bed9c6c0bdddf644c52080bd2d2613"></span><span class="n"><span class="pre">esp_log_level_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log_level_espnow</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_log_config_s16log_level_espnowE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Level of log sent from espnow </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_log_config_s16log_level_customE">
+<span id="_CPPv3N19espnow_log_config_s16log_level_customE"></span><span id="_CPPv2N19espnow_log_config_s16log_level_customE"></span><span id="espnow_log_config_s::log_level_custom__esp_log_level_t"></span><span class="target" id="structespnow__log__config__s_1a306ecb6b91f24ffd1a66e747684240ff"></span><span class="n"><span class="pre">esp_log_level_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log_level_custom</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_log_config_s16log_level_customE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Level of log defined by customer </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_log_config_s16log_custom_writeE">
+<span id="_CPPv3N19espnow_log_config_s16log_custom_writeE"></span><span id="_CPPv2N19espnow_log_config_s16log_custom_writeE"></span><span id="espnow_log_config_s::log_custom_write__espnow_log_custom_write_cb"></span><span class="target" id="structespnow__log__config__s_1a6cb2beaff343bae6223fd338db26b7a6"></span><a class="reference internal" href="#_CPPv426espnow_log_custom_write_cb" title="espnow_log_custom_write_cb"><span class="n"><span class="pre">espnow_log_custom_write_cb</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">log_custom_write</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_log_config_s16log_custom_writeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Customer defined log callback function </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="macros">
+<h3>Macros<a class="headerlink" href="#macros" title="Permalink to this headline"></a></h3>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DEBUG_LOG_PRINTF">
+<span class="target" id="espnow__log_8h_1a987abb9002210b8635a592262b5df32e"></span><span class="sig-name descname"><span class="n"><span class="pre">DEBUG_LOG_PRINTF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.DEBUG_LOG_PRINTF" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Configuration of debug log stored in flash. Whether to output information according to the client needs. Please assign CONFIG_ESPNOW_DEBUG_LOG_PRINTF_ENABLE a value. </p>
+<p>&lt; _cplusplus</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CONFIG_ESPNOW_DEBUG_LOG_PRINTF_ENABLE = 1 enable CONFIG_ESPNOW_DEBUG_LOG_PRINTF_ENABLE = 0 disable </p>
+</div>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DEBUG_LOG_MALLOC">
+<span class="target" id="espnow__log_8h_1a99d864e4a729cb9df4dbae7e7428bbf1"></span><span class="sig-name descname"><span class="n"><span class="pre">DEBUG_LOG_MALLOC</span></span></span><a class="headerlink" href="#c.DEBUG_LOG_MALLOC" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DEBUG_LOG_FREE">
+<span class="target" id="espnow__log_8h_1a643a06d69a62dcb07bb236dcadb6e4c2"></span><span class="sig-name descname"><span class="n"><span class="pre">DEBUG_LOG_FREE</span></span></span><a class="headerlink" href="#c.DEBUG_LOG_FREE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CONFIG_ESPNOW_DEBUG_SECURITY">
+<span class="target" id="espnow__log_8h_1a070c29bea8ebbc4cced79f4fe3076ab6"></span><span class="sig-name descname"><span class="n"><span class="pre">CONFIG_ESPNOW_DEBUG_SECURITY</span></span></span><a class="headerlink" href="#c.CONFIG_ESPNOW_DEBUG_SECURITY" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_LOG_FLASH_FULL">
+<span class="target" id="espnow__log_8h_1a927d752a55efa2d057f9a6fcd7686de1"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_LOG_FLASH_FULL</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_LOG_FLASH_FULL" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Enumerated list of debug event id. </p>
+</dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_log_custom_write_cb">
+<span id="_CPPv326espnow_log_custom_write_cb"></span><span id="_CPPv226espnow_log_custom_write_cb"></span><span id="espnow_log_custom_write_cb"></span><span class="target" id="espnow__log_8h_1ad41487a0936de185d919da924608a793"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_custom_write_cb</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">esp_log_level_t</span></span><span class="w"> </span><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv426espnow_log_custom_write_cb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The log callback function. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>Each time a log is sent, the callback function will be called if defined.</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param data</dt>
+<dd class="field-odd"><p><strong>[in]</strong> the log data </p>
+</dd>
+<dt class="field-even">Param size</dt>
+<dd class="field-even"><p><strong>[in]</strong> the log data size in bytes </p>
+</dd>
+<dt class="field-odd">Param tag</dt>
+<dd class="field-odd"><p><strong>[in]</strong> the log tag </p>
+</dd>
+<dt class="field-even">Param level</dt>
+<dd class="field-even"><p><strong>[in]</strong> the log level</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_log_config_t">
+<span id="_CPPv319espnow_log_config_t"></span><span id="_CPPv219espnow_log_config_t"></span><span id="espnow_log_config_t"></span><span class="target" id="espnow__log_8h_1abc56c24910fa605501dae4e6dbd2e04f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_log_config_s" title="espnow_log_config_s"><span class="n"><span class="pre">espnow_log_config_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_log_config_t</span></span></span><a class="headerlink" href="#_CPPv419espnow_log_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Log sending configuration. </p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="espnow_console.html" class="btn btn-neutral float-left" title="Debug Console API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../espnow/index.html" class="btn btn-neutral float-right" title="ESPNOW API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

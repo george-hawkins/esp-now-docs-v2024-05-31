@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debug Console API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/debug/espnow_console';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Debug LOG API" href="espnow_log.html" />
+    <link rel="prev" title="Debug CMD API" href="espnow_cmd.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Debug API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="espnow_cmd.html">Debug CMD API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Debug Console API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="espnow_log.html">Debug LOG API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota/index.html">OTA API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../provisioning/index.html">Provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/index.html">Security API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/index.html">Utils API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">Debug API</a> &raquo;</li>
+      <li>Debug Console API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/debug/espnow_console.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="debug-console-api">
+<h1>Debug Console API<a class="headerlink" href="#debug-console-api" title="Permalink to this headline"></a></h1>
+<p>Debug console related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/debug/include/espnow_console.h">src/debug/include/espnow_console.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_console_initPK23espnow_console_config_t">
+<span id="_CPPv319espnow_console_initPK23espnow_console_config_t"></span><span id="_CPPv219espnow_console_initPK23espnow_console_config_t"></span><span id="espnow_console_init__espnow_console_config_tCP"></span><span class="target" id="espnow__console_8h_1aa6f31005efa0f0074f02968b96f8bd7a"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_console_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_console_config_t" title="espnow_console_config_t"><span class="n"><span class="pre">espnow_console_config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419espnow_console_initPK23espnow_console_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initialize console module. </p>
+<p><ul class="simple">
+<li><p>Initialize the console</p></li>
+<li><p>Register help commands</p></li>
+<li><p>Initialize filesystem</p></li>
+<li><p>Create console handle task</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – <strong>[in]</strong> pointer to the console configuration structure</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_console_deinitv">
+<span id="_CPPv321espnow_console_deinitv"></span><span id="_CPPv221espnow_console_deinitv"></span><span id="espnow_console_deinit__void"></span><span class="target" id="espnow__console_8h_1a0be316c6f7f1f25eb1fee9b4b3dfc637"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_console_deinit</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421espnow_console_deinitv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>De-initialize console module Call this once when done using console module functions. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432espnow_console_commands_registerv">
+<span id="_CPPv332espnow_console_commands_registerv"></span><span id="_CPPv232espnow_console_commands_registerv"></span><span id="espnow_console_commands_register"></span><span class="target" id="espnow__console_8h_1ab54d62da1c751b34f4ce7cf1ccb2459b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_console_commands_register</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432espnow_console_commands_registerv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Register Common commands. </p>
+<p>_cplusplus </p>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_console_config_s">
+<span id="_CPPv323espnow_console_config_s"></span><span id="_CPPv223espnow_console_config_s"></span><span id="espnow_console_config_s"></span><span class="target" id="structespnow__console__config__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_console_config_s</span></span></span><a class="headerlink" href="#_CPPv423espnow_console_config_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Console configuration. </p>
+<p>&lt; _cplusplus </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_console_config_s4uartE">
+<span id="_CPPv3N23espnow_console_config_s4uartE"></span><span id="_CPPv2N23espnow_console_config_s4uartE"></span><span id="espnow_console_config_s::uart__b"></span><span class="target" id="structespnow__console__config__s_1adefcd6d3cb79df169a209525dcbfdf4c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uart</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_console_config_s4uartE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Receiving command from uart </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_console_config_s6espnowE">
+<span id="_CPPv3N23espnow_console_config_s6espnowE"></span><span id="_CPPv2N23espnow_console_config_s6espnowE"></span><span id="espnow_console_config_s::espnow__b"></span><span class="target" id="structespnow__console__config__s_1ab0b425fbaa5df62be90c22c73e914498"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_console_config_s6espnowE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Receiving command from espnow </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_console_config_s15monitor_commandE">
+<span id="_CPPv3N23espnow_console_config_s15monitor_commandE"></span><span id="_CPPv2N23espnow_console_config_s15monitor_commandE"></span><span class="target" id="structespnow__console__config__s_1ad55a78264cbc68b5f1c99a49358b8863"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_console_config_s" title="espnow_console_config_s"><span class="n"><span class="pre">espnow_console_config_s</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">monitor_command</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_console_config_s15monitor_commandE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Command monitor configuration </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_console_config_s9base_pathE">
+<span id="_CPPv3N23espnow_console_config_s9base_pathE"></span><span id="_CPPv2N23espnow_console_config_s9base_pathE"></span><span id="espnow_console_config_s::base_path__cCP"></span><span class="target" id="structespnow__console__config__s_1abaaf20f4005e4414b27b827cb3f642d4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">base_path</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_console_config_s9base_pathE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Path where partition should be registered (e.g. “/spiflash”) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_console_config_s15partition_labelE">
+<span id="_CPPv3N23espnow_console_config_s15partition_labelE"></span><span id="_CPPv2N23espnow_console_config_s15partition_labelE"></span><span id="espnow_console_config_s::partition_label__cCP"></span><span class="target" id="structespnow__console__config__s_1a2fa90b44412f34cb93e66cded996a0d3"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">partition_label</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_console_config_s15partition_labelE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Label of the partition which should be used </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_console_config_s13store_historyE">
+<span id="_CPPv3N23espnow_console_config_s13store_historyE"></span><span id="_CPPv2N23espnow_console_config_s13store_historyE"></span><span class="target" id="structespnow__console__config__s_1a02abc7d4392e7ee504ee19a922487ffe"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_console_config_s" title="espnow_console_config_s"><span class="n"><span class="pre">espnow_console_config_s</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">store_history</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_console_config_s13store_historyE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Command story history configuration </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_console_config_t">
+<span id="_CPPv323espnow_console_config_t"></span><span id="_CPPv223espnow_console_config_t"></span><span id="espnow_console_config_t"></span><span class="target" id="espnow__console_8h_1a314fd218c7e33a9dad62073334911165"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_console_config_s" title="espnow_console_config_s"><span class="n"><span class="pre">espnow_console_config_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_console_config_t</span></span></span><a class="headerlink" href="#_CPPv423espnow_console_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Console configuration. </p>
+<p>&lt; _cplusplus </p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="espnow_cmd.html" class="btn btn-neutral float-left" title="Debug CMD API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="espnow_log.html" class="btn btn-neutral float-right" title="Debug LOG API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

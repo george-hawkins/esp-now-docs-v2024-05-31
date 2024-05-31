@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTA API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/ota/espnow_ota';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Provisioning API" href="../provisioning/index.html" />
+    <link rel="prev" title="OTA API" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debug/index.html">Debug API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">OTA API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OTA API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../provisioning/index.html">Provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/index.html">Security API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/index.html">Utils API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">OTA API</a> &raquo;</li>
+      <li>OTA API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/ota/espnow_ota.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ota-api">
+<h1>OTA API<a class="headerlink" href="#ota-api" title="Permalink to this headline"></a></h1>
+<p>OTA(Over The Air) layer related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/ota/include/espnow_ota.h">src/ota/include/espnow_ota.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_ota_initiator_sendPK13espnow_addr_t6size_tA19ESPNOW_OTA_HASH_LEN_K7uint8_t6size_t30espnow_ota_initiator_data_cb_tP19espnow_ota_result_t">
+<span id="_CPPv325espnow_ota_initiator_sendPK13espnow_addr_t6size_tA19ESPNOW_OTA_HASH_LEN_K7uint8_t6size_t30espnow_ota_initiator_data_cb_tP19espnow_ota_result_t"></span><span id="_CPPv225espnow_ota_initiator_sendPK13espnow_addr_t6size_tAESPNOW_OTA_HASH_LEN_K7uint8_t6size_t30espnow_ota_initiator_data_cb_tP19espnow_ota_result_t"></span><span id="espnow_ota_initiator_send__espnow_addr_tCP.s.uint8_tCA.s.espnow_ota_initiator_data_cb_t.espnow_ota_result_tP"></span><span class="target" id="espnow__ota_8h_1ac4efb837a8af5dc2b0b6161c3e5a4146"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_initiator_send</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">addrs_list</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">addrs_num</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sha_256</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ESPNOW_OTA_HASH_LEN</span></span><span class="p"><span class="pre">]</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <a class="reference internal" href="#_CPPv430espnow_ota_initiator_data_cb_t" title="espnow_ota_initiator_data_cb_t"><span class="n"><span class="pre">espnow_ota_initiator_data_cb_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">ota_data_cb</span></span>, <a class="reference internal" href="#_CPPv419espnow_ota_result_t" title="espnow_ota_result_t"><span class="n"><span class="pre">espnow_ota_result_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_ota_initiator_sendPK13espnow_addr_t6size_tA19ESPNOW_OTA_HASH_LEN_K7uint8_t6size_t30espnow_ota_initiator_data_cb_tP19espnow_ota_result_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Root sends firmware to other nodes. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>Only called at the root</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>addrs_list</strong> – <strong>[in]</strong> destination node mac list </p></li>
+<li><p><strong>addrs_num</strong> – <strong>[in]</strong> number of destination nodes </p></li>
+<li><p><strong>sha_256</strong> – <strong>[in]</strong> SHA-256 digest for the upgrade partition </p></li>
+<li><p><strong>size</strong> – <strong>[in]</strong> upgrade firmware total size </p></li>
+<li><p><strong>ota_data_cb</strong> – <strong>[in]</strong> upgrade data callback function </p></li>
+<li><p><strong>res</strong> – <strong>[out]</strong> must call espnow_ota_initiator_result_free to free memory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_ESPNOW_OTA_FIRMWARE_NOT_INIT</p></li>
+<li><p>ESP_ERR_ESPNOW_OTA_DEVICE_NO_EXIST </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_ota_initiator_stopv">
+<span id="_CPPv325espnow_ota_initiator_stopv"></span><span id="_CPPv225espnow_ota_initiator_stopv"></span><span id="espnow_ota_initiator_stop"></span><span class="target" id="espnow__ota_8h_1a7b3ae1f632c288ecf227cbe6e9f0207f"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_initiator_stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_ota_initiator_stopv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Stop root to send firmware to other nodes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_NOT_SUPPORTED </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432espnow_ota_initiator_result_freeP19espnow_ota_result_t">
+<span id="_CPPv332espnow_ota_initiator_result_freeP19espnow_ota_result_t"></span><span id="_CPPv232espnow_ota_initiator_result_freeP19espnow_ota_result_t"></span><span id="espnow_ota_initiator_result_free__espnow_ota_result_tP"></span><span class="target" id="espnow__ota_8h_1a9eb1ad986dd12913c28b3a470d556517"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_initiator_result_free</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419espnow_ota_result_t" title="espnow_ota_result_t"><span class="n"><span class="pre">espnow_ota_result_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">result</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432espnow_ota_initiator_result_freeP19espnow_ota_result_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Free memory in the result list. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>result</strong> – <strong>[in]</strong> pointer to device upgrade status</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_ota_initiator_scanPP22espnow_ota_responder_tP6size_t10TickType_t">
+<span id="_CPPv325espnow_ota_initiator_scanPP22espnow_ota_responder_tP6size_t10TickType_t"></span><span id="_CPPv225espnow_ota_initiator_scanPP22espnow_ota_responder_tP6size_t10TickType_t"></span><span id="espnow_ota_initiator_scan__espnow_ota_responder_tPP.sP.TickType_t"></span><span class="target" id="espnow__ota_8h_1aee0516bac5db5dd7eceeffe99bad6465"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_initiator_scan</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv422espnow_ota_responder_t" title="espnow_ota_responder_t"><span class="n"><span class="pre">espnow_ota_responder_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">info_list</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">num</span></span>, <span class="n"><span class="pre">TickType_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_ota_initiator_scanPP22espnow_ota_responder_tP6size_t10TickType_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Root scans other nodes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info_list</strong> – <strong>[out]</strong> responder information list </p></li>
+<li><p><strong>num</strong> – <strong>[out]</strong> responder number </p></li>
+<li><p><strong>wait_ticks</strong> – <strong>[in]</strong> the maximum scanning time in ticks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437espnow_ota_initiator_scan_result_freev">
+<span id="_CPPv337espnow_ota_initiator_scan_result_freev"></span><span id="_CPPv237espnow_ota_initiator_scan_result_freev"></span><span id="espnow_ota_initiator_scan_result_free__void"></span><span class="target" id="espnow__ota_8h_1a630bcac8853933ca3e9d9bd048b141ae"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_initiator_scan_result_free</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437espnow_ota_initiator_scan_result_freev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Free memory in the responder information list. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431espnow_ota_responder_get_statusP19espnow_ota_status_t">
+<span id="_CPPv331espnow_ota_responder_get_statusP19espnow_ota_status_t"></span><span id="_CPPv231espnow_ota_responder_get_statusP19espnow_ota_status_t"></span><span id="espnow_ota_responder_get_status__espnow_ota_status_tP"></span><span class="target" id="espnow__ota_8h_1a94811f53599997918aec26c802e20390"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_responder_get_status</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419espnow_ota_status_t" title="espnow_ota_status_t"><span class="n"><span class="pre">espnow_ota_status_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431espnow_ota_responder_get_statusP19espnow_ota_status_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the status of the upgrade. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> – <strong>[out]</strong> the status of the upgrade</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG</p></li>
+<li><p>ESP_ERR_NOT_SUPPORTED </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_ota_responder_stopv">
+<span id="_CPPv325espnow_ota_responder_stopv"></span><span id="_CPPv225espnow_ota_responder_stopv"></span><span id="espnow_ota_responder_stop"></span><span class="target" id="espnow__ota_8h_1a4b263db2fd7308d7e9c1998d14a80939"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_responder_stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_ota_responder_stopv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Stop upgrading. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_ota_responder_startPK19espnow_ota_config_t">
+<span id="_CPPv326espnow_ota_responder_startPK19espnow_ota_config_t"></span><span id="_CPPv226espnow_ota_responder_startPK19espnow_ota_config_t"></span><span id="espnow_ota_responder_start__espnow_ota_config_tCP"></span><span class="target" id="espnow__ota_8h_1ab046328511e23a2687f41b7c3b7cc407"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_responder_start</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_ota_config_t" title="espnow_ota_config_t"><span class="n"><span class="pre">espnow_ota_config_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">config</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_ota_responder_startPK19espnow_ota_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Start upgrading. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – <strong>[in]</strong> upgrade configuration</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL _cplusplus </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_ota_info_s">
+<span id="_CPPv317espnow_ota_info_s"></span><span id="_CPPv217espnow_ota_info_s"></span><span id="espnow_ota_info_s"></span><span class="target" id="structespnow__ota__info__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_info_s</span></span></span><a class="headerlink" href="#_CPPv417espnow_ota_info_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Firmware upgrade information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_ota_info_s4typeE">
+<span id="_CPPv3N17espnow_ota_info_s4typeE"></span><span id="_CPPv2N17espnow_ota_info_s4typeE"></span><span id="espnow_ota_info_s::type__uint8_t"></span><span class="target" id="structespnow__ota__info__s_1a2ba4b3e463721530ff2566fe4187a049"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_ota_info_s4typeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Packet type </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_ota_info_s8app_descE">
+<span id="_CPPv3N17espnow_ota_info_s8app_descE"></span><span id="_CPPv2N17espnow_ota_info_s8app_descE"></span><span id="espnow_ota_info_s::app_desc__esp_app_desc_t"></span><span class="target" id="structespnow__ota__info__s_1a237108bc7aa528d5757730a1b79de982"></span><span class="n"><span class="pre">esp_app_desc_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">app_desc</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_ota_info_s8app_descE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Description about application </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422espnow_ota_responder_s">
+<span id="_CPPv322espnow_ota_responder_s"></span><span id="_CPPv222espnow_ota_responder_s"></span><span id="espnow_ota_responder_s"></span><span class="target" id="structespnow__ota__responder__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_responder_s</span></span></span><a class="headerlink" href="#_CPPv422espnow_ota_responder_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder upgrade information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_ota_responder_s3macE">
+<span id="_CPPv3N22espnow_ota_responder_s3macE"></span><span id="_CPPv2N22espnow_ota_responder_s3macE"></span><span id="espnow_ota_responder_s::mac__uint8_tA"></span><span class="target" id="structespnow__ota__responder__s_1ad6af05fcd9d3651bc927cd0c87ff0999"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mac</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22espnow_ota_responder_s3macE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Mac address of responder </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_ota_responder_s4rssiE">
+<span id="_CPPv3N22espnow_ota_responder_s4rssiE"></span><span id="_CPPv2N22espnow_ota_responder_s4rssiE"></span><span id="espnow_ota_responder_s::rssi__int8_t"></span><span class="target" id="structespnow__ota__responder__s_1aca3f26393bae4dfe5bea9d6ffeb29262"></span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rssi</span></span></span><a class="headerlink" href="#_CPPv4N22espnow_ota_responder_s4rssiE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Packet rssi </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_ota_responder_s7channelE">
+<span id="_CPPv3N22espnow_ota_responder_s7channelE"></span><span id="_CPPv2N22espnow_ota_responder_s7channelE"></span><span id="espnow_ota_responder_s::channel__uint8_t"></span><span class="target" id="structespnow__ota__responder__s_1a88110de5219a231fbcfbb578703c9ae8"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channel</span></span></span><a class="headerlink" href="#_CPPv4N22espnow_ota_responder_s7channelE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder channel </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_ota_responder_s8app_descE">
+<span id="_CPPv3N22espnow_ota_responder_s8app_descE"></span><span id="_CPPv2N22espnow_ota_responder_s8app_descE"></span><span id="espnow_ota_responder_s::app_desc__esp_app_desc_t"></span><span class="target" id="structespnow__ota__responder__s_1a85dafdf5352fa923b25470b3804000bb"></span><span class="n"><span class="pre">esp_app_desc_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">app_desc</span></span></span><a class="headerlink" href="#_CPPv4N22espnow_ota_responder_s8app_descE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Application description of responder </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_packet_s">
+<span id="_CPPv319espnow_ota_packet_s"></span><span id="_CPPv219espnow_ota_packet_s"></span><span id="espnow_ota_packet_s"></span><span class="target" id="structespnow__ota__packet__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_packet_s</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_packet_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Firmware packet. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_packet_s4typeE">
+<span id="_CPPv3N19espnow_ota_packet_s4typeE"></span><span id="_CPPv2N19espnow_ota_packet_s4typeE"></span><span id="espnow_ota_packet_s::type__uint8_t"></span><span class="target" id="structespnow__ota__packet__s_1a70cda7be712ab7c3f5012be5c7eb5cc3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_packet_s4typeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Type of packet, ESPNOW_OTA_TYPE_DATA </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_packet_s3seqE">
+<span id="_CPPv3N19espnow_ota_packet_s3seqE"></span><span id="_CPPv2N19espnow_ota_packet_s3seqE"></span><span id="espnow_ota_packet_s::seq__uint16_t"></span><span class="target" id="structespnow__ota__packet__s_1a8613b52724d23433cfe1856e8a4bcf9f"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seq</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_packet_s3seqE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Sequence </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_packet_s4sizeE">
+<span id="_CPPv3N19espnow_ota_packet_s4sizeE"></span><span id="_CPPv2N19espnow_ota_packet_s4sizeE"></span><span id="espnow_ota_packet_s::size__uint8_t"></span><span class="target" id="structespnow__ota__packet__s_1a387c0d178f78406631b4852c1c2094e9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_packet_s4sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Size </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_packet_s4dataE">
+<span id="_CPPv3N19espnow_ota_packet_s4dataE"></span><span id="_CPPv2N19espnow_ota_packet_s4dataE"></span><span id="espnow_ota_packet_s::data__uint8_tA"></span><span class="target" id="structespnow__ota__packet__s_1a2fc761448bf9cca5d803b3c0ce3ea9c9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ESPNOW_OTA_PACKET_MAX_SIZE</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_packet_s4dataE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Firmware </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_config_s">
+<span id="_CPPv319espnow_ota_config_s"></span><span id="_CPPv219espnow_ota_config_s"></span><span id="espnow_ota_config_s"></span><span class="target" id="structespnow__ota__config__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_config_s</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_config_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Upgrade configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_config_s18skip_version_checkE">
+<span id="_CPPv3N19espnow_ota_config_s18skip_version_checkE"></span><span id="_CPPv2N19espnow_ota_config_s18skip_version_checkE"></span><span id="espnow_ota_config_s::skip_version_check__b"></span><span class="target" id="structespnow__ota__config__s_1a0186fbf5c77b6e96e6930fc27ac37a66"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">skip_version_check</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_config_s18skip_version_checkE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Skip checking the running version with the upgrade version </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_config_s24progress_report_intervalE">
+<span id="_CPPv3N19espnow_ota_config_s24progress_report_intervalE"></span><span id="_CPPv2N19espnow_ota_config_s24progress_report_intervalE"></span><span id="espnow_ota_config_s::progress_report_interval__uint8_t"></span><span class="target" id="structespnow__ota__config__s_1a8601b5decb031ab54987790401ec6c4e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">progress_report_interval</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_config_s24progress_report_intervalE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Percentage interval to save OTA status and report ota status event </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_status_s">
+<span id="_CPPv319espnow_ota_status_s"></span><span id="_CPPv219espnow_ota_status_s"></span><span id="espnow_ota_status_s"></span><span class="target" id="structespnow__ota__status__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_status_s</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_status_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Status packet. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s4typeE">
+<span id="_CPPv3N19espnow_ota_status_s4typeE"></span><span id="_CPPv2N19espnow_ota_status_s4typeE"></span><span id="espnow_ota_status_s::type__uint8_t"></span><span class="target" id="structespnow__ota__status__s_1a51779deee9da0ed1a11a853fa9740e5e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s4typeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Type of packet, ESPNOW_OTA_TYPE_STATUS </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s7sha_256E">
+<span id="_CPPv3N19espnow_ota_status_s7sha_256E"></span><span id="_CPPv2N19espnow_ota_status_s7sha_256E"></span><span id="espnow_ota_status_s::sha_256__uint8_tA"></span><span class="target" id="structespnow__ota__status__s_1a3b335807ab2a71af28ea6ee0ec1855c1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sha_256</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ESPNOW_OTA_HASH_LEN</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s7sha_256E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Unique identifier of the firmware </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s10error_codeE">
+<span id="_CPPv3N19espnow_ota_status_s10error_codeE"></span><span id="_CPPv2N19espnow_ota_status_s10error_codeE"></span><span id="espnow_ota_status_s::error_code__int16_t"></span><span class="target" id="structespnow__ota__status__s_1abb98c1261c871f70df0fb23d944febb9"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">error_code</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s10error_codeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Upgrade status </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s10packet_numE">
+<span id="_CPPv3N19espnow_ota_status_s10packet_numE"></span><span id="_CPPv2N19espnow_ota_status_s10packet_numE"></span><span id="espnow_ota_status_s::packet_num__uint16_t"></span><span class="target" id="structespnow__ota__status__s_1a1d5c02f9038f1d734d9af9a094a26148"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_num</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s10packet_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Identify if each packet of data has been written </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s10total_sizeE">
+<span id="_CPPv3N19espnow_ota_status_s10total_sizeE"></span><span id="_CPPv2N19espnow_ota_status_s10total_sizeE"></span><span id="espnow_ota_status_s::total_size__uint32_t"></span><span class="target" id="structespnow__ota__status__s_1a9afb8a42f4792f2646ad86e9e94146b4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">total_size</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s10total_sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Total length of the firmware </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s12written_sizeE">
+<span id="_CPPv3N19espnow_ota_status_s12written_sizeE"></span><span id="_CPPv2N19espnow_ota_status_s12written_sizeE"></span><span id="espnow_ota_status_s::written_size__uint32_t"></span><span class="target" id="structespnow__ota__status__s_1a8491ddc2f62a79984a43f5a776540ae9"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">written_size</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s12written_sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The length of the flash has been written </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s14progress_indexE">
+<span id="_CPPv3N19espnow_ota_status_s14progress_indexE"></span><span id="_CPPv2N19espnow_ota_status_s14progress_indexE"></span><span id="espnow_ota_status_s::progress_index__uint8_t"></span><span class="target" id="structespnow__ota__status__s_1a25edbc37e096bcdf9277cac37ff4daaa"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">progress_index</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s14progress_indexE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Identify if each packet of data has been written </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_status_s14progress_arrayE">
+<span id="_CPPv3N19espnow_ota_status_s14progress_arrayE"></span><span id="_CPPv2N19espnow_ota_status_s14progress_arrayE"></span><span id="espnow_ota_status_s::progress_array__uint8_tAA"></span><span class="target" id="structespnow__ota__status__s_1a6f37e026b060d67444baaaa713663de7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">progress_array</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ESPNOW_OTA_PROGRESS_MAX_SIZE</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_status_s14progress_arrayE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Identify if each packet of data has been written </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_result_s">
+<span id="_CPPv319espnow_ota_result_s"></span><span id="_CPPv219espnow_ota_result_s"></span><span id="espnow_ota_result_s"></span><span class="target" id="structespnow__ota__result__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_result_s</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_result_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>List of device status during the upgrade process. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_result_s14unfinished_numE">
+<span id="_CPPv3N19espnow_ota_result_s14unfinished_numE"></span><span id="_CPPv2N19espnow_ota_result_s14unfinished_numE"></span><span id="espnow_ota_result_s::unfinished_num__s"></span><span class="target" id="structespnow__ota__result__s_1a075f90a866832d52ff8ec4366b977731"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unfinished_num</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_result_s14unfinished_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The number of devices to be upgraded </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_result_s15unfinished_addrE">
+<span id="_CPPv3N19espnow_ota_result_s15unfinished_addrE"></span><span id="_CPPv2N19espnow_ota_result_s15unfinished_addrE"></span><span id="espnow_ota_result_s::unfinished_addr__espnow_addr_tP"></span><span class="target" id="structespnow__ota__result__s_1a5be6e51b7cfe71ec7c0c460f5e7e88a1"></span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">unfinished_addr</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_result_s15unfinished_addrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>MAC address of devices to be upgraded </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_result_s13successed_numE">
+<span id="_CPPv3N19espnow_ota_result_s13successed_numE"></span><span id="_CPPv2N19espnow_ota_result_s13successed_numE"></span><span id="espnow_ota_result_s::successed_num__s"></span><span class="target" id="structespnow__ota__result__s_1a60ee89d2ec3825f4d1caf3173a312f54"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">successed_num</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_result_s13successed_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The number of devices that succeeded to upgrade </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_result_s14successed_addrE">
+<span id="_CPPv3N19espnow_ota_result_s14successed_addrE"></span><span id="_CPPv2N19espnow_ota_result_s14successed_addrE"></span><span id="espnow_ota_result_s::successed_addr__espnow_addr_tP"></span><span class="target" id="structespnow__ota__result__s_1aa75413ed776c1d6c71c4103a35c64352"></span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">successed_addr</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_result_s14successed_addrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>MAC address of devices that succeeded to upgrade </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_result_s13requested_numE">
+<span id="_CPPv3N19espnow_ota_result_s13requested_numE"></span><span id="_CPPv2N19espnow_ota_result_s13requested_numE"></span><span id="espnow_ota_result_s::requested_num__s"></span><span class="target" id="structespnow__ota__result__s_1a099c8610a46fb362d9c361c9657b9f92"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requested_num</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_result_s13requested_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The number of devices that not completed to upgrade </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_ota_result_s14requested_addrE">
+<span id="_CPPv3N19espnow_ota_result_s14requested_addrE"></span><span id="_CPPv2N19espnow_ota_result_s14requested_addrE"></span><span id="espnow_ota_result_s::requested_addr__espnow_addr_tP"></span><span class="target" id="structespnow__ota__result__s_1ab64e5cb39dced1194ce577b7d2a7d4d3"></span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">requested_addr</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_ota_result_s14requested_addrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>MAC address of devices that not completed to upgrade </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="macros">
+<h3>Macros<a class="headerlink" href="#macros" title="Permalink to this headline"></a></h3>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_OTA_HASH_LEN">
+<span class="target" id="espnow__ota_8h_1a6503b406221e6292f80745691bec5cfb"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_HASH_LEN</span></span></span><a class="headerlink" href="#c.ESPNOW_OTA_HASH_LEN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>&lt; _cplusplus </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_BASE">
+<span class="target" id="espnow__ota_8h_1a81b897e53621223f0d75fb6238e69903"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_BASE</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_BASE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_FIRMWARE_NOT_INIT">
+<span class="target" id="espnow__ota_8h_1a8f74498aba7d686fa6b83ae1661e6559"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_FIRMWARE_NOT_INIT</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_FIRMWARE_NOT_INIT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Upgrade error code definition. </p>
+<p>Uninitialized firmware configuration </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_FIRMWARE_PARTITION">
+<span class="target" id="espnow__ota_8h_1a38595b1863cc81aab2d8b99b28fdfca7"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_FIRMWARE_PARTITION</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_FIRMWARE_PARTITION" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Partition table error </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_FIRMWARE_INVALID">
+<span class="target" id="espnow__ota_8h_1a7c6c94b0b1d25377686f6e86304aadb9"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_FIRMWARE_INVALID</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_FIRMWARE_INVALID" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Non-project generated firmware </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_FIRMWARE_INCOMPLETE">
+<span class="target" id="espnow__ota_8h_1acb344f9db5324abc5faa5ee1ab3ffc64"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_FIRMWARE_INCOMPLETE</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_FIRMWARE_INCOMPLETE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The firmware received by the device is incomplete </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_FIRMWARE_DOWNLOAD">
+<span class="target" id="espnow__ota_8h_1a366d44082f84b6cb8178f98770ba006e"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_FIRMWARE_DOWNLOAD</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_FIRMWARE_DOWNLOAD" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Firmware write flash error </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_FIRMWARE_FINISH">
+<span class="target" id="espnow__ota_8h_1abb20a6b485c0aae73fade4bf745692ce"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_FIRMWARE_FINISH</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_FIRMWARE_FINISH" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The firmware has been written to completion </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_DEVICE_NO_EXIST">
+<span class="target" id="espnow__ota_8h_1a5bffb0fa8427b2bde6757c23fb7cf00c"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_DEVICE_NO_EXIST</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_DEVICE_NO_EXIST" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The device that needs to be upgraded does not exist </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_SEND_PACKET_LOSS">
+<span class="target" id="espnow__ota_8h_1acb47f1a2e88ffd8e34a4ceccf6a9f4ea"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_SEND_PACKET_LOSS</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_SEND_PACKET_LOSS" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Request device upgrade status failed </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_NOT_INIT">
+<span class="target" id="espnow__ota_8h_1a97e146865a89978d73be6ed5df148e88"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_NOT_INIT</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_NOT_INIT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Upgrade configuration is not initialized </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_STOP">
+<span class="target" id="espnow__ota_8h_1aecfc07f8194536316f2b4ecd0b4a613c"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_STOP</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_STOP" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Upgrade stops with error </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERR_ESPNOW_OTA_FINISH">
+<span class="target" id="espnow__ota_8h_1aefcaa16071b02fea7f5c5ed2dc7985b3"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERR_ESPNOW_OTA_FINISH</span></span></span><a class="headerlink" href="#c.ESP_ERR_ESPNOW_OTA_FINISH" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The running firmware has been upgraded </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_OTA_STARTED">
+<span class="target" id="espnow__ota_8h_1a94d39f1b6254cc335f4e07101d8c95dd"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_OTA_STARTED</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_OTA_STARTED" title="Permalink to this definition"></a><br /></dt>
+<dd><p>enumerated list of upgrade event id </p>
+<p>The device starts to upgrade </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_OTA_STATUS">
+<span class="target" id="espnow__ota_8h_1a40991d5099af98612b8b61288d29d22a"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_OTA_STATUS</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_OTA_STATUS" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Proactively report progress </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_OTA_FINISH">
+<span class="target" id="espnow__ota_8h_1a63bb6a7908aed6826e14813510f72b69"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_OTA_FINISH</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_OTA_FINISH" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The upgrade is complete and the new firmware will run after the reboot </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_OTA_STOPED">
+<span class="target" id="espnow__ota_8h_1abe9defcf0425f2837f0c3b8fd820be9e"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_OTA_STOPED</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_OTA_STOPED" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Stop upgrading </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_OTA_FIRMWARE_DOWNLOAD">
+<span class="target" id="espnow__ota_8h_1a617503edc9988b1b6de09b2c56d9cc12"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_OTA_FIRMWARE_DOWNLOAD</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_OTA_FIRMWARE_DOWNLOAD" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Start writing firmware to flash </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_OTA_SEND_FINISH">
+<span class="target" id="espnow__ota_8h_1ad5bdc6cf6df9005c9383b40addfdfd02"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_OTA_SEND_FINISH</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_OTA_SEND_FINISH" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Send the firmware to other devices to complete </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_OTA_PROGRESS_MAX_SIZE">
+<span class="target" id="espnow__ota_8h_1aa5b44a05052556775357aaadd95191c9"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_PROGRESS_MAX_SIZE</span></span></span><a class="headerlink" href="#c.ESPNOW_OTA_PROGRESS_MAX_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Firmware subcontract upgrade. </p>
+<p>Maximum length of the array which indicates the packet processed </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_OTA_PACKET_MAX_SIZE">
+<span class="target" id="espnow__ota_8h_1a19d1470bf6c73846e182867537496a38"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_PACKET_MAX_SIZE</span></span></span><a class="headerlink" href="#c.ESPNOW_OTA_PACKET_MAX_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Maximum length of a single packet transmitted </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_OTA_PACKET_MAX_NUM">
+<span class="target" id="espnow__ota_8h_1a40e1e2bf7808db0d6359f293e0e931a3"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_PACKET_MAX_NUM</span></span></span><a class="headerlink" href="#c.ESPNOW_OTA_PACKET_MAX_NUM" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The maximum number of packets </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_OTA_GET_BITS">
+<span class="target" id="espnow__ota_8h_1ac02d9445f30ed03ed4cfea1261e5766f"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_GET_BITS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESPNOW_OTA_GET_BITS" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bit operations to get and modify a bit in an array. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_OTA_SET_BITS">
+<span class="target" id="espnow__ota_8h_1aea0ae145e0f86ba33fc7915a7711913f"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_SET_BITS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESPNOW_OTA_SET_BITS" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CONFIG_ESPNOW_OTA_SECURITY">
+<span class="target" id="espnow__ota_8h_1aba52de29c4ba7286b773613402d2471b"></span><span class="sig-name descname"><span class="n"><span class="pre">CONFIG_ESPNOW_OTA_SECURITY</span></span></span><a class="headerlink" href="#c.CONFIG_ESPNOW_OTA_SECURITY" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_ota_info_t">
+<span id="_CPPv317espnow_ota_info_t"></span><span id="_CPPv217espnow_ota_info_t"></span><span id="espnow_ota_info_t"></span><span class="target" id="espnow__ota_8h_1a899f9021e8b6c01def6b5badcabc40fd"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv417espnow_ota_info_s" title="espnow_ota_info_s"><span class="n"><span class="pre">espnow_ota_info_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_info_t</span></span></span><a class="headerlink" href="#_CPPv417espnow_ota_info_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Firmware upgrade information. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv422espnow_ota_responder_t">
+<span id="_CPPv322espnow_ota_responder_t"></span><span id="_CPPv222espnow_ota_responder_t"></span><span id="espnow_ota_responder_t"></span><span class="target" id="espnow__ota_8h_1a4690c76271daba6b50453260f9ed37ae"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422espnow_ota_responder_s" title="espnow_ota_responder_s"><span class="n"><span class="pre">espnow_ota_responder_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_responder_t</span></span></span><a class="headerlink" href="#_CPPv422espnow_ota_responder_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder upgrade information. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_packet_t">
+<span id="_CPPv319espnow_ota_packet_t"></span><span id="_CPPv219espnow_ota_packet_t"></span><span id="espnow_ota_packet_t"></span><span class="target" id="espnow__ota_8h_1a33f4888185f8b94528dad8982dd91eb5"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_ota_packet_s" title="espnow_ota_packet_s"><span class="n"><span class="pre">espnow_ota_packet_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_packet_t</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_packet_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Firmware packet. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_config_t">
+<span id="_CPPv319espnow_ota_config_t"></span><span id="_CPPv219espnow_ota_config_t"></span><span id="espnow_ota_config_t"></span><span class="target" id="espnow__ota_8h_1a326ecb47784c1ffd50967aabdf5e9e40"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_ota_config_s" title="espnow_ota_config_s"><span class="n"><span class="pre">espnow_ota_config_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_config_t</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Upgrade configuration. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_status_t">
+<span id="_CPPv319espnow_ota_status_t"></span><span id="_CPPv219espnow_ota_status_t"></span><span id="espnow_ota_status_t"></span><span class="target" id="espnow__ota_8h_1ae014fbdf7fe73eaefa0dc7e84af12acb"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_ota_status_s" title="espnow_ota_status_s"><span class="n"><span class="pre">espnow_ota_status_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_status_t</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_status_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Status packet. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_ota_result_t">
+<span id="_CPPv319espnow_ota_result_t"></span><span id="_CPPv219espnow_ota_result_t"></span><span id="espnow_ota_result_t"></span><span class="target" id="espnow__ota_8h_1a78afaf1123cc7a830b702e3fff384868"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_ota_result_s" title="espnow_ota_result_s"><span class="n"><span class="pre">espnow_ota_result_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_result_t</span></span></span><a class="headerlink" href="#_CPPv419espnow_ota_result_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>List of device status during the upgrade process. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv430espnow_ota_initiator_data_cb_t">
+<span id="_CPPv330espnow_ota_initiator_data_cb_t"></span><span id="_CPPv230espnow_ota_initiator_data_cb_t"></span><span id="espnow_ota_initiator_data_cb_t"></span><span class="target" id="espnow__ota_8h_1a87d3fb245480ba062a9161392ece4b32"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_initiator_data_cb_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">src_offset</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv430espnow_ota_initiator_data_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The upgrade data callback function Read firmware data from flash to send to unfinished device. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param src_offset</dt>
+<dd class="field-odd"><p><strong>[in]</strong> address of the data to be read, relative to the beginning of the partition. </p>
+</dd>
+<dt class="field-even">Param dst</dt>
+<dd class="field-even"><p><strong>[out]</strong> pointer to the buffer where data should be stored. Pointer must be non-NULL and buffer must be at least ‘size’ bytes long. </p>
+</dd>
+<dt class="field-odd">Param size</dt>
+<dd class="field-odd"><p><strong>[in]</strong> size of data to be read, in bytes.</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline"></a></h3>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_ota_type_t">
+<span id="_CPPv317espnow_ota_type_t"></span><span id="_CPPv217espnow_ota_type_t"></span><span class="target" id="espnow__ota_8h_1a9fe11bb6e6bc0b92b35d5d53281aaf58"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ota_type_t</span></span></span><a class="headerlink" href="#_CPPv417espnow_ota_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Type of packet. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_ota_type_t23ESPNOW_OTA_TYPE_REQUESTE">
+<span id="_CPPv3N17espnow_ota_type_t23ESPNOW_OTA_TYPE_REQUESTE"></span><span id="_CPPv2N17espnow_ota_type_t23ESPNOW_OTA_TYPE_REQUESTE"></span><span class="target" id="espnow__ota_8h_1a9fe11bb6e6bc0b92b35d5d53281aaf58a967ac999cc59de5cd33691e11a55c73f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_TYPE_REQUEST</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_ota_type_t23ESPNOW_OTA_TYPE_REQUESTE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_ota_type_t20ESPNOW_OTA_TYPE_INFOE">
+<span id="_CPPv3N17espnow_ota_type_t20ESPNOW_OTA_TYPE_INFOE"></span><span id="_CPPv2N17espnow_ota_type_t20ESPNOW_OTA_TYPE_INFOE"></span><span class="target" id="espnow__ota_8h_1a9fe11bb6e6bc0b92b35d5d53281aaf58af26c2e532527871a5bc75b67e7307a8a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_TYPE_INFO</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_ota_type_t20ESPNOW_OTA_TYPE_INFOE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_ota_type_t20ESPNOW_OTA_TYPE_DATAE">
+<span id="_CPPv3N17espnow_ota_type_t20ESPNOW_OTA_TYPE_DATAE"></span><span id="_CPPv2N17espnow_ota_type_t20ESPNOW_OTA_TYPE_DATAE"></span><span class="target" id="espnow__ota_8h_1a9fe11bb6e6bc0b92b35d5d53281aaf58ad78ec51eb5bf733a062c0af444258ccf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_TYPE_DATA</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_ota_type_t20ESPNOW_OTA_TYPE_DATAE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_ota_type_t22ESPNOW_OTA_TYPE_STATUSE">
+<span id="_CPPv3N17espnow_ota_type_t22ESPNOW_OTA_TYPE_STATUSE"></span><span id="_CPPv2N17espnow_ota_type_t22ESPNOW_OTA_TYPE_STATUSE"></span><span class="target" id="espnow__ota_8h_1a9fe11bb6e6bc0b92b35d5d53281aaf58a0b6db02b24c5eecbc43b75715dee7fa2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_OTA_TYPE_STATUS</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_ota_type_t22ESPNOW_OTA_TYPE_STATUSE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="OTA API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../provisioning/index.html" class="btn btn-neutral float-right" title="Provisioning API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Handshake API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/security/espnow_security_handshake';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Security API" href="espnow_security.html" />
+    <link rel="prev" title="Security API" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debug/index.html">Debug API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota/index.html">OTA API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../provisioning/index.html">Provisioning API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Security API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Security Handshake API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="espnow_security.html">Security API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/index.html">Utils API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">Security API</a> &raquo;</li>
+      <li>Security Handshake API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/security/espnow_security_handshake.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="security-handshake-api">
+<h1>Security Handshake API<a class="headerlink" href="#security-handshake-api" title="Permalink to this headline"></a></h1>
+<p>Security handshake related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/security/include/espnow_security_handshake.h">src/security/include/espnow_security_handshake.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_sec_initiator_scanPP22espnow_sec_responder_tP6size_t10TickType_t">
+<span id="_CPPv325espnow_sec_initiator_scanPP22espnow_sec_responder_tP6size_t10TickType_t"></span><span id="_CPPv225espnow_sec_initiator_scanPP22espnow_sec_responder_tP6size_t10TickType_t"></span><span id="espnow_sec_initiator_scan__espnow_sec_responder_tPP.sP.TickType_t"></span><span class="target" id="espnow__security__handshake_8h_1a12881d6f97ddc0e338bf4c148ff3b3f1"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_initiator_scan</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv422espnow_sec_responder_t" title="espnow_sec_responder_t"><span class="n"><span class="pre">espnow_sec_responder_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">info_list</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">num</span></span>, <span class="n"><span class="pre">TickType_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_sec_initiator_scanPP22espnow_sec_responder_tP6size_t10TickType_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Root scans other node info. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>Only called at the root</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info_list</strong> – <strong>[out]</strong> destination nodes of mac </p></li>
+<li><p><strong>num</strong> – <strong>[out]</strong> number of scaned nodes </p></li>
+<li><p><strong>wait_ticks</strong> – <strong>[in]</strong> the maximum scanning time in ticks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437espnow_sec_initiator_scan_result_freev">
+<span id="_CPPv337espnow_sec_initiator_scan_result_freev"></span><span id="_CPPv237espnow_sec_initiator_scan_result_freev"></span><span id="espnow_sec_initiator_scan_result_free__void"></span><span class="target" id="espnow__security__handshake_8h_1a8075a2af2dce156e6690dae2e9e9ee9a"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_initiator_scan_result_free</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437espnow_sec_initiator_scan_result_freev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Free memory in the scan information list. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_sec_initiator_startA11APP_KEY_LEN_7uint8_tPKcA_AL6E_K7uint8_t6size_tP19espnow_sec_result_t">
+<span id="_CPPv326espnow_sec_initiator_startA11APP_KEY_LEN_7uint8_tPKcA_AL6E_K7uint8_t6size_tP19espnow_sec_result_t"></span><span id="_CPPv226espnow_sec_initiator_startAAPP_KEY_LEN_7uint8_tPKcA_A6_K7uint8_t6size_tP19espnow_sec_result_t"></span><span id="espnow_sec_initiator_start__uint8_tA.cCP.uint8_tCAA.s.espnow_sec_result_tP"></span><span class="target" id="espnow__security__handshake_8h_1a5b56a74d828a5c7a98db82253eefaec1"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_initiator_start</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key_info</span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">APP_KEY_LEN</span></span><span class="p"><span class="pre">]</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pop_data</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">addrs_list</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">addrs_num</span></span>, <a class="reference internal" href="#_CPPv419espnow_sec_result_t" title="espnow_sec_result_t"><span class="n"><span class="pre">espnow_sec_result_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_sec_initiator_startA11APP_KEY_LEN_7uint8_tPKcA_AL6E_K7uint8_t6size_tP19espnow_sec_result_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Root sends security to other nodes. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>Only called at the root</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key_info</strong> – <strong>[in]</strong> the security key info to sent to responder </p></li>
+<li><p><strong>pop_data</strong> – <strong>[in]</strong> Proof of Possession (PoP) string </p></li>
+<li><p><strong>addrs_list</strong> – <strong>[in]</strong> destination nodes of mac </p></li>
+<li><p><strong>addrs_num</strong> – <strong>[in]</strong> number of destination nodes </p></li>
+<li><p><strong>res</strong> – <strong>[out]</strong> must call espnow_sec_initiator_result_free to free memory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_sec_initiator_stopv">
+<span id="_CPPv325espnow_sec_initiator_stopv"></span><span id="_CPPv225espnow_sec_initiator_stopv"></span><span id="espnow_sec_initiator_stop"></span><span class="target" id="espnow__security__handshake_8h_1a7a8e4d9665fcb29552a9ae2f5f3c2d68"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_initiator_stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_sec_initiator_stopv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Stop Root to send security to other nodes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432espnow_sec_initiator_result_freeP19espnow_sec_result_t">
+<span id="_CPPv332espnow_sec_initiator_result_freeP19espnow_sec_result_t"></span><span id="_CPPv232espnow_sec_initiator_result_freeP19espnow_sec_result_t"></span><span id="espnow_sec_initiator_result_free__espnow_sec_result_tP"></span><span class="target" id="espnow__security__handshake_8h_1a81aec3f1855281ed78ef328d763f295d"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_initiator_result_free</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419espnow_sec_result_t" title="espnow_sec_result_t"><span class="n"><span class="pre">espnow_sec_result_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">result</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432espnow_sec_initiator_result_freeP19espnow_sec_result_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Free memory in the results list. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>result</strong> – <strong>[in]</strong> pointer to device security status</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_sec_responder_startPKc">
+<span id="_CPPv326espnow_sec_responder_startPKc"></span><span id="_CPPv226espnow_sec_responder_startPKc"></span><span id="espnow_sec_responder_start__cCP"></span><span class="target" id="espnow__security__handshake_8h_1a550e5f438d39bba5dc7c34e48c6f1c65"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_responder_start</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pop_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_sec_responder_startPKc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Start security process. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pop_data</strong> – <strong>[in]</strong> Proof of Possession (PoP) string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_sec_responder_stopv">
+<span id="_CPPv325espnow_sec_responder_stopv"></span><span id="_CPPv225espnow_sec_responder_stopv"></span><span id="espnow_sec_responder_stop"></span><span class="target" id="espnow__security__handshake_8h_1ad0495671e444c90a584c8789185e4d33"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_responder_stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_sec_responder_stopv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Stop security process. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL _cplusplus </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_sec_info_s">
+<span id="_CPPv317espnow_sec_info_s"></span><span id="_CPPv217espnow_sec_info_s"></span><span id="espnow_sec_info_s"></span><span class="target" id="structespnow__sec__info__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_info_s</span></span></span><a class="headerlink" href="#_CPPv417espnow_sec_info_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Security information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_info_s4typeE">
+<span id="_CPPv3N17espnow_sec_info_s4typeE"></span><span id="_CPPv2N17espnow_sec_info_s4typeE"></span><span id="espnow_sec_info_s::type__uint8_t"></span><span class="target" id="structespnow__sec__info__s_1a732fbb38c681bdf8c68b68b9d37e29ff"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_info_s4typeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ESPNOW_SEC_TYPE_REQUEST or ESPNOW_SEC_TYPE_INFO </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_info_s7sec_verE">
+<span id="_CPPv3N17espnow_sec_info_s7sec_verE"></span><span id="_CPPv2N17espnow_sec_info_s7sec_verE"></span><span id="espnow_sec_info_s::sec_ver__uint8_t"></span><span class="target" id="structespnow__sec__info__s_1a6d7ada9b33818366c826ee40b5b8fb1c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sec_ver</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_info_s7sec_verE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Security version </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_info_s10client_macE">
+<span id="_CPPv3N17espnow_sec_info_s10client_macE"></span><span id="_CPPv2N17espnow_sec_info_s10client_macE"></span><span id="espnow_sec_info_s::client_mac__uint8_tA"></span><span class="target" id="structespnow__sec__info__s_1a01b925327607c42a37845abc55ff2271"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">client_mac</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_info_s10client_macE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Mac address of initiator </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422espnow_sec_responder_s">
+<span id="_CPPv322espnow_sec_responder_s"></span><span id="_CPPv222espnow_sec_responder_s"></span><span id="espnow_sec_responder_s"></span><span class="target" id="structespnow__sec__responder__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_responder_s</span></span></span><a class="headerlink" href="#_CPPv422espnow_sec_responder_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder security information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_sec_responder_s3macE">
+<span id="_CPPv3N22espnow_sec_responder_s3macE"></span><span id="_CPPv2N22espnow_sec_responder_s3macE"></span><span id="espnow_sec_responder_s::mac__uint8_tA"></span><span class="target" id="structespnow__sec__responder__s_1a4e76827168501873eaf88dd62d032cc7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mac</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22espnow_sec_responder_s3macE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Mac address of responder </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_sec_responder_s4rssiE">
+<span id="_CPPv3N22espnow_sec_responder_s4rssiE"></span><span id="_CPPv2N22espnow_sec_responder_s4rssiE"></span><span id="espnow_sec_responder_s::rssi__int8_t"></span><span class="target" id="structespnow__sec__responder__s_1a806844f284086c23a7096844756777c2"></span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rssi</span></span></span><a class="headerlink" href="#_CPPv4N22espnow_sec_responder_s4rssiE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Packet rssi </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_sec_responder_s7channelE">
+<span id="_CPPv3N22espnow_sec_responder_s7channelE"></span><span id="_CPPv2N22espnow_sec_responder_s7channelE"></span><span id="espnow_sec_responder_s::channel__uint8_t"></span><span class="target" id="structespnow__sec__responder__s_1a68f6fe2cc69c2237d0e490d4ca6eb2b4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channel</span></span></span><a class="headerlink" href="#_CPPv4N22espnow_sec_responder_s7channelE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The channel of responder </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22espnow_sec_responder_s7sec_verE">
+<span id="_CPPv3N22espnow_sec_responder_s7sec_verE"></span><span id="_CPPv2N22espnow_sec_responder_s7sec_verE"></span><span id="espnow_sec_responder_s::sec_ver__uint8_t"></span><span class="target" id="structespnow__sec__responder__s_1adcd4b3d57a39637da28afbc82e1c0203"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sec_ver</span></span></span><a class="headerlink" href="#_CPPv4N22espnow_sec_responder_s7sec_verE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The security version of responder </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_sec_packet_s">
+<span id="_CPPv319espnow_sec_packet_s"></span><span id="_CPPv219espnow_sec_packet_s"></span><span id="espnow_sec_packet_s"></span><span class="target" id="structespnow__sec__packet__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_packet_s</span></span></span><a class="headerlink" href="#_CPPv419espnow_sec_packet_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Handshake packet. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_packet_s4typeE">
+<span id="_CPPv3N19espnow_sec_packet_s4typeE"></span><span id="_CPPv2N19espnow_sec_packet_s4typeE"></span><span id="espnow_sec_packet_s::type__uint8_t"></span><span class="target" id="structespnow__sec__packet__s_1a3ea763e75da074c375338829a096a467"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_packet_s4typeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Type of packet, ESPNOW_SEC_TYPE_HANDSHAKE </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_packet_s4sizeE">
+<span id="_CPPv3N19espnow_sec_packet_s4sizeE"></span><span id="_CPPv2N19espnow_sec_packet_s4sizeE"></span><span id="espnow_sec_packet_s::size__uint8_t"></span><span class="target" id="structespnow__sec__packet__s_1a0ba2f8a5d1f09fc960ff31238b3c4493"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_packet_s4sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Size </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_packet_s4dataE">
+<span id="_CPPv3N19espnow_sec_packet_s4dataE"></span><span id="_CPPv2N19espnow_sec_packet_s4dataE"></span><span id="espnow_sec_packet_s::data__uint8_tA"></span><span class="target" id="structespnow__sec__packet__s_1a5e97c15592e4499867b8b1f3adbe18e4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_packet_s4dataE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Message </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_sec_result_s">
+<span id="_CPPv319espnow_sec_result_s"></span><span id="_CPPv219espnow_sec_result_s"></span><span id="espnow_sec_result_s"></span><span class="target" id="structespnow__sec__result__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_result_s</span></span></span><a class="headerlink" href="#_CPPv419espnow_sec_result_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>List of device status during the security process. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_result_s14unfinished_numE">
+<span id="_CPPv3N19espnow_sec_result_s14unfinished_numE"></span><span id="_CPPv2N19espnow_sec_result_s14unfinished_numE"></span><span id="espnow_sec_result_s::unfinished_num__s"></span><span class="target" id="structespnow__sec__result__s_1a81d14156d3e1033f6a7d2d21b999098e"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unfinished_num</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_result_s14unfinished_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The number of devices to be set key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_result_s15unfinished_addrE">
+<span id="_CPPv3N19espnow_sec_result_s15unfinished_addrE"></span><span id="_CPPv2N19espnow_sec_result_s15unfinished_addrE"></span><span id="espnow_sec_result_s::unfinished_addr__espnow_addr_tP"></span><span class="target" id="structespnow__sec__result__s_1a529a22db9f5de27e0b874ab6ca6c14e0"></span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">unfinished_addr</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_result_s15unfinished_addrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>MAC address of devices to be set key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_result_s13successed_numE">
+<span id="_CPPv3N19espnow_sec_result_s13successed_numE"></span><span id="_CPPv2N19espnow_sec_result_s13successed_numE"></span><span id="espnow_sec_result_s::successed_num__s"></span><span class="target" id="structespnow__sec__result__s_1ad59f78457f4eb081b8b70b2f15f2687f"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">successed_num</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_result_s13successed_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The number of devices that succeeded to set key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_result_s14successed_addrE">
+<span id="_CPPv3N19espnow_sec_result_s14successed_addrE"></span><span id="_CPPv2N19espnow_sec_result_s14successed_addrE"></span><span id="espnow_sec_result_s::successed_addr__espnow_addr_tP"></span><span class="target" id="structespnow__sec__result__s_1a569173f6124641190652c538ae0e3192"></span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">successed_addr</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_result_s14successed_addrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>MAC address of devices that succeeded to set key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_result_s13requested_numE">
+<span id="_CPPv3N19espnow_sec_result_s13requested_numE"></span><span id="_CPPv2N19espnow_sec_result_s13requested_numE"></span><span id="espnow_sec_result_s::requested_num__s"></span><span class="target" id="structespnow__sec__result__s_1a3d88d9c9c4fbbe054aab2ae8fcb0ce7b"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requested_num</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_result_s13requested_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Reserved </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19espnow_sec_result_s14requested_addrE">
+<span id="_CPPv3N19espnow_sec_result_s14requested_addrE"></span><span id="_CPPv2N19espnow_sec_result_s14requested_addrE"></span><span id="espnow_sec_result_s::requested_addr__espnow_addr_tP"></span><span class="target" id="structespnow__sec__result__s_1a42a7872a7f0f03f7b6e63a443ba0e758"></span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">requested_addr</span></span></span><a class="headerlink" href="#_CPPv4N19espnow_sec_result_s14requested_addrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Reserved </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_sec_info_t">
+<span id="_CPPv317espnow_sec_info_t"></span><span id="_CPPv217espnow_sec_info_t"></span><span id="espnow_sec_info_t"></span><span class="target" id="espnow__security__handshake_8h_1a3f78526ada86da3faf9ef5207cedca79"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv417espnow_sec_info_s" title="espnow_sec_info_s"><span class="n"><span class="pre">espnow_sec_info_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_info_t</span></span></span><a class="headerlink" href="#_CPPv417espnow_sec_info_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Security information. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv422espnow_sec_responder_t">
+<span id="_CPPv322espnow_sec_responder_t"></span><span id="_CPPv222espnow_sec_responder_t"></span><span id="espnow_sec_responder_t"></span><span class="target" id="espnow__security__handshake_8h_1a896dc18e71c09a63c8578e828a65c1b1"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422espnow_sec_responder_s" title="espnow_sec_responder_s"><span class="n"><span class="pre">espnow_sec_responder_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_responder_t</span></span></span><a class="headerlink" href="#_CPPv422espnow_sec_responder_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder security information. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_sec_packet_t">
+<span id="_CPPv319espnow_sec_packet_t"></span><span id="_CPPv219espnow_sec_packet_t"></span><span id="espnow_sec_packet_t"></span><span class="target" id="espnow__security__handshake_8h_1a67e77b6edc06fc0af5100a7eeaf7c16d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_sec_packet_s" title="espnow_sec_packet_s"><span class="n"><span class="pre">espnow_sec_packet_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_packet_t</span></span></span><a class="headerlink" href="#_CPPv419espnow_sec_packet_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Handshake packet. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419espnow_sec_result_t">
+<span id="_CPPv319espnow_sec_result_t"></span><span id="_CPPv219espnow_sec_result_t"></span><span id="espnow_sec_result_t"></span><span class="target" id="espnow__security__handshake_8h_1a452c7d5f5d182eb3ec39fb9e59fa9e8f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419espnow_sec_result_s" title="espnow_sec_result_s"><span class="n"><span class="pre">espnow_sec_result_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_result_t</span></span></span><a class="headerlink" href="#_CPPv419espnow_sec_result_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>List of device status during the security process. </p>
+</dd></dl>
+
+</section>
+<section id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline"></a></h3>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417espnow_sec_type_t">
+<span id="_CPPv317espnow_sec_type_t"></span><span id="_CPPv217espnow_sec_type_t"></span><span class="target" id="espnow__security__handshake_8h_1a7e75ac94c303d39684119cff11a444d9"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_type_t</span></span></span><a class="headerlink" href="#_CPPv417espnow_sec_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Type of packet. </p>
+<p>&lt; _cplusplus </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_type_t23ESPNOW_SEC_TYPE_REQUESTE">
+<span id="_CPPv3N17espnow_sec_type_t23ESPNOW_SEC_TYPE_REQUESTE"></span><span id="_CPPv2N17espnow_sec_type_t23ESPNOW_SEC_TYPE_REQUESTE"></span><span class="target" id="espnow__security__handshake_8h_1a7e75ac94c303d39684119cff11a444d9a1b36bb1039e2aff4c62ae502291dbeb8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_TYPE_REQUEST</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_type_t23ESPNOW_SEC_TYPE_REQUESTE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Request security information </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_type_t20ESPNOW_SEC_TYPE_INFOE">
+<span id="_CPPv3N17espnow_sec_type_t20ESPNOW_SEC_TYPE_INFOE"></span><span id="_CPPv2N17espnow_sec_type_t20ESPNOW_SEC_TYPE_INFOE"></span><span class="target" id="espnow__security__handshake_8h_1a7e75ac94c303d39684119cff11a444d9ab46480968f7df9dd1a6655536119bbc1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_TYPE_INFO</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_type_t20ESPNOW_SEC_TYPE_INFOE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Security information </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_type_t25ESPNOW_SEC_TYPE_HANDSHAKEE">
+<span id="_CPPv3N17espnow_sec_type_t25ESPNOW_SEC_TYPE_HANDSHAKEE"></span><span id="_CPPv2N17espnow_sec_type_t25ESPNOW_SEC_TYPE_HANDSHAKEE"></span><span class="target" id="espnow__security__handshake_8h_1a7e75ac94c303d39684119cff11a444d9a89e388968fb2e97e5d483fd154aa5c92"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_TYPE_HANDSHAKE</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_type_t25ESPNOW_SEC_TYPE_HANDSHAKEE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Handshake packet to get key </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_type_t19ESPNOW_SEC_TYPE_KEYE">
+<span id="_CPPv3N17espnow_sec_type_t19ESPNOW_SEC_TYPE_KEYE"></span><span id="_CPPv2N17espnow_sec_type_t19ESPNOW_SEC_TYPE_KEYE"></span><span class="target" id="espnow__security__handshake_8h_1a7e75ac94c303d39684119cff11a444d9aa4fcb149836e6e839428ec3ad3443eda"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_TYPE_KEY</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_type_t19ESPNOW_SEC_TYPE_KEYE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Packet containing app key </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_type_t24ESPNOW_SEC_TYPE_KEY_RESPE">
+<span id="_CPPv3N17espnow_sec_type_t24ESPNOW_SEC_TYPE_KEY_RESPE"></span><span id="_CPPv2N17espnow_sec_type_t24ESPNOW_SEC_TYPE_KEY_RESPE"></span><span class="target" id="espnow__security__handshake_8h_1a7e75ac94c303d39684119cff11a444d9ac0e0e114306730c5cc878138ab4c0682"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_TYPE_KEY_RESP</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_type_t24ESPNOW_SEC_TYPE_KEY_RESPE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Response to confirm gotten the app key </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17espnow_sec_type_t20ESPNOW_SEC_TYPE_RESTE">
+<span id="_CPPv3N17espnow_sec_type_t20ESPNOW_SEC_TYPE_RESTE"></span><span id="_CPPv2N17espnow_sec_type_t20ESPNOW_SEC_TYPE_RESTE"></span><span class="target" id="espnow__security__handshake_8h_1a7e75ac94c303d39684119cff11a444d9ac7deec1d29d2d3f1787dc97b503d56f9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_TYPE_REST</span></span></span><a class="headerlink" href="#_CPPv4N17espnow_sec_type_t20ESPNOW_SEC_TYPE_RESTE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Reset security information </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_sec_ver_type_t">
+<span id="_CPPv321espnow_sec_ver_type_t"></span><span id="_CPPv221espnow_sec_ver_type_t"></span><span class="target" id="espnow__security__handshake_8h_1a03c147b86602fc66865afc6b0cc22815"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_sec_ver_type_t</span></span></span><a class="headerlink" href="#_CPPv421espnow_sec_ver_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Security version. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_NONEE">
+<span id="_CPPv3N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_NONEE"></span><span id="_CPPv2N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_NONEE"></span><span class="target" id="espnow__security__handshake_8h_1a03c147b86602fc66865afc6b0cc22815aa00865e446e2a190e7ee72a406a20f00"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_VER_NONE</span></span></span><a class="headerlink" href="#_CPPv4N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_NONEE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>No security </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_0E">
+<span id="_CPPv3N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_0E"></span><span id="_CPPv2N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_0E"></span><span class="target" id="espnow__security__handshake_8h_1a03c147b86602fc66865afc6b0cc22815a3aff8e309bf67b40279e413d74644b20"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_VER_V1_0</span></span></span><a class="headerlink" href="#_CPPv4N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_0E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The default security version </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_1E">
+<span id="_CPPv3N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_1E"></span><span id="_CPPv2N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_1E"></span><span class="target" id="espnow__security__handshake_8h_1a03c147b86602fc66865afc6b0cc22815af361b4975eb233bf769707dd9df27ee2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_SEC_VER_V1_1</span></span></span><a class="headerlink" href="#_CPPv4N21espnow_sec_ver_type_t19ESPNOW_SEC_VER_V1_1E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Used in the future </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Security API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="espnow_security.html" class="btn btn-neutral float-right" title="Security API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

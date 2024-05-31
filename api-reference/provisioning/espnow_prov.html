@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provisioning API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/provisioning/espnow_prov';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Security API" href="../security/index.html" />
+    <link rel="prev" title="Provisioning API" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debug/index.html">Debug API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota/index.html">OTA API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Provisioning API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Provisioning API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../security/index.html">Security API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/index.html">Utils API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">Provisioning API</a> &raquo;</li>
+      <li>Provisioning API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/provisioning/espnow_prov.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="provisioning-api">
+<h1>Provisioning API<a class="headerlink" href="#provisioning-api" title="Permalink to this headline"></a></h1>
+<p>Provisioning layer related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/provisioning/include/espnow_prov.h">src/provisioning/include/espnow_prov.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_prov_initiator_scan13espnow_addr_tP23espnow_prov_responder_tP18wifi_pkt_rx_ctrl_t10TickType_t">
+<span id="_CPPv326espnow_prov_initiator_scan13espnow_addr_tP23espnow_prov_responder_tP18wifi_pkt_rx_ctrl_t10TickType_t"></span><span id="_CPPv226espnow_prov_initiator_scan13espnow_addr_tP23espnow_prov_responder_tP18wifi_pkt_rx_ctrl_t10TickType_t"></span><span id="espnow_prov_initiator_scan__espnow_addr_t.espnow_prov_responder_tP.wifi_pkt_rx_ctrl_tP.TickType_t"></span><span class="target" id="espnow__prov_8h_1a240ebdf7699831e0c5ad4f99e02a4c9b"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_initiator_scan</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">responder_addr</span></span>, <a class="reference internal" href="#_CPPv423espnow_prov_responder_t" title="espnow_prov_responder_t"><span class="n"><span class="pre">espnow_prov_responder_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">responder_info</span></span>, <span class="n"><span class="pre">wifi_pkt_rx_ctrl_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rx_ctrl</span></span>, <span class="n"><span class="pre">TickType_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_prov_initiator_scan13espnow_addr_tP23espnow_prov_responder_tP18wifi_pkt_rx_ctrl_t10TickType_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initiator scans provision beacon. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>responder_addr</strong> – <strong>[out]</strong> mac address of responder </p></li>
+<li><p><strong>responder_info</strong> – <strong>[out]</strong> information of responder </p></li>
+<li><p><strong>rx_ctrl</strong> – <strong>[out]</strong> received packet radio metadata header </p></li>
+<li><p><strong>wait_ticks</strong> – <strong>[in]</strong> the maximum waiting time in ticks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_prov_initiator_sendK13espnow_addr_tPK23espnow_prov_initiator_t16espnow_prov_cb_t10TickType_t">
+<span id="_CPPv326espnow_prov_initiator_sendK13espnow_addr_tPK23espnow_prov_initiator_t16espnow_prov_cb_t10TickType_t"></span><span id="_CPPv226espnow_prov_initiator_sendK13espnow_addr_tPK23espnow_prov_initiator_t16espnow_prov_cb_t10TickType_t"></span><span id="espnow_prov_initiator_send__espnow_addr_tC.espnow_prov_initiator_tCP.espnow_prov_cb_t.TickType_t"></span><span class="target" id="espnow__prov_8h_1abaa28382b2a61ee896c9744ce986bb20"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_initiator_send</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">responder_addr</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_prov_initiator_t" title="espnow_prov_initiator_t"><span class="n"><span class="pre">espnow_prov_initiator_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">initiator_info</span></span>, <a class="reference internal" href="#_CPPv416espnow_prov_cb_t" title="espnow_prov_cb_t"><span class="n"><span class="pre">espnow_prov_cb_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cb</span></span>, <span class="n"><span class="pre">TickType_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_prov_initiator_sendK13espnow_addr_tPK23espnow_prov_initiator_t16espnow_prov_cb_t10TickType_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initiator sends information to request WiFi configuration. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>responder_addr</strong> – <strong>[in]</strong> mac address of responder </p></li>
+<li><p><strong>initiator_info</strong> – <strong>[in]</strong> information of initiator </p></li>
+<li><p><strong>cb</strong> – <strong>[in]</strong> WiFi configuration callback function </p></li>
+<li><p><strong>wait_ticks</strong> – <strong>[in]</strong> the maximum waiting time in ticks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_WIFI_TIMEOUT</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427espnow_prov_responder_startPK23espnow_prov_responder_t10TickType_tPK18espnow_prov_wifi_t16espnow_prov_cb_t">
+<span id="_CPPv327espnow_prov_responder_startPK23espnow_prov_responder_t10TickType_tPK18espnow_prov_wifi_t16espnow_prov_cb_t"></span><span id="_CPPv227espnow_prov_responder_startPK23espnow_prov_responder_t10TickType_tPK18espnow_prov_wifi_t16espnow_prov_cb_t"></span><span id="espnow_prov_responder_start__espnow_prov_responder_tCP.TickType_t.espnow_prov_wifi_tCP.espnow_prov_cb_t"></span><span class="target" id="espnow__prov_8h_1a6401425874590913f92bb30f4d2a4301"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_responder_start</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_prov_responder_t" title="espnow_prov_responder_t"><span class="n"><span class="pre">espnow_prov_responder_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">responder_info</span></span>, <span class="n"><span class="pre">TickType_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ticks</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418espnow_prov_wifi_t" title="espnow_prov_wifi_t"><span class="n"><span class="pre">espnow_prov_wifi_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">wifi_config</span></span>, <a class="reference internal" href="#_CPPv416espnow_prov_cb_t" title="espnow_prov_cb_t"><span class="n"><span class="pre">espnow_prov_cb_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427espnow_prov_responder_startPK23espnow_prov_responder_t10TickType_tPK18espnow_prov_wifi_t16espnow_prov_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder starts to send provision beacon, receives initiator request and send WiFi configuration. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>responder_info</strong> – <strong>[in]</strong> information of responder </p></li>
+<li><p><strong>wait_ticks</strong> – <strong>[in]</strong> provision beacon sending time in ticks </p></li>
+<li><p><strong>wifi_config</strong> – <strong>[in]</strong> WiFi configuration information </p></li>
+<li><p><strong>cb</strong> – <strong>[in]</strong> initiator information callback function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_prov_initiator_s">
+<span id="_CPPv323espnow_prov_initiator_s"></span><span id="_CPPv223espnow_prov_initiator_s"></span><span id="espnow_prov_initiator_s"></span><span class="target" id="structespnow__prov__initiator__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_initiator_s</span></span></span><a class="headerlink" href="#_CPPv423espnow_prov_initiator_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initiator information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s10product_idE">
+<span id="_CPPv3N23espnow_prov_initiator_s10product_idE"></span><span id="_CPPv2N23espnow_prov_initiator_s10product_idE"></span><span id="espnow_prov_initiator_s::product_id__cA"></span><span class="target" id="structespnow__prov__initiator__s_1a53e20932828cf0e847164dd0a8a4f6d8"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">product_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s10product_idE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Product ID </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s11device_nameE">
+<span id="_CPPv3N23espnow_prov_initiator_s11device_nameE"></span><span id="_CPPv2N23espnow_prov_initiator_s11device_nameE"></span><span id="espnow_prov_initiator_s::device_name__cA"></span><span class="target" id="structespnow__prov__initiator__s_1a1e6747fb5db4a52c81c87f9f3fa6efaf"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">device_name</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s11device_nameE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Device name </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s9auth_modeE">
+<span id="_CPPv3N23espnow_prov_initiator_s9auth_modeE"></span><span id="_CPPv2N23espnow_prov_initiator_s9auth_modeE"></span><span id="espnow_prov_initiator_s::auth_mode__espnow_prov_auth_mode_t"></span><span class="target" id="structespnow__prov__initiator__s_1af9b914cf8bed91c9f87adde816d41d45"></span><a class="reference internal" href="#_CPPv423espnow_prov_auth_mode_t" title="espnow_prov_auth_mode_t"><span class="n"><span class="pre">espnow_prov_auth_mode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">auth_mode</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s9auth_modeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Authentication mode of provisioning </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s13device_secretE">
+<span id="_CPPv3N23espnow_prov_initiator_s13device_secretE"></span><span id="_CPPv2N23espnow_prov_initiator_s13device_secretE"></span><span id="espnow_prov_initiator_s::device_secret__cA"></span><span class="target" id="structespnow__prov__initiator__s_1ac3a345d15cc3e5d3e81dabf00ac6af05"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">device_secret</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">32</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s13device_secretE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Device security key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s14product_secretE">
+<span id="_CPPv3N23espnow_prov_initiator_s14product_secretE"></span><span id="_CPPv2N23espnow_prov_initiator_s14product_secretE"></span><span id="espnow_prov_initiator_s::product_secret__cA"></span><span class="target" id="structespnow__prov__initiator__s_1aa1f71fb309989f76688a4780b2764147"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">product_secret</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">32</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s14product_secretE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Product security key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s11cert_secretE">
+<span id="_CPPv3N23espnow_prov_initiator_s11cert_secretE"></span><span id="_CPPv2N23espnow_prov_initiator_s11cert_secretE"></span><span id="espnow_prov_initiator_s::cert_secret__cA"></span><span class="target" id="structespnow__prov__initiator__s_1ae6d1ec9ce7152f8ac62dc55257d3a196"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cert_secret</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">32</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s11cert_secretE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Certify security key </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s11custom_sizeE">
+<span id="_CPPv3N23espnow_prov_initiator_s11custom_sizeE"></span><span id="_CPPv2N23espnow_prov_initiator_s11custom_sizeE"></span><span id="espnow_prov_initiator_s::custom_size__uint8_t"></span><span class="target" id="structespnow__prov__initiator__s_1ad3e421a63ba020a523eb6556a3bbaf00"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">custom_size</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s11custom_sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Customer data size </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_initiator_s11custom_dataE">
+<span id="_CPPv3N23espnow_prov_initiator_s11custom_dataE"></span><span id="_CPPv2N23espnow_prov_initiator_s11custom_dataE"></span><span id="espnow_prov_initiator_s::custom_data__uint8_tA"></span><span class="target" id="structespnow__prov__initiator__s_1adc8a80616d6d12924a70fb4b9022ad15"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">custom_data</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_initiator_s11custom_dataE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Customer data </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_prov_responder_s">
+<span id="_CPPv323espnow_prov_responder_s"></span><span id="_CPPv223espnow_prov_responder_s"></span><span id="espnow_prov_responder_s"></span><span class="target" id="structespnow__prov__responder__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_responder_s</span></span></span><a class="headerlink" href="#_CPPv423espnow_prov_responder_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_responder_s10product_idE">
+<span id="_CPPv3N23espnow_prov_responder_s10product_idE"></span><span id="_CPPv2N23espnow_prov_responder_s10product_idE"></span><span id="espnow_prov_responder_s::product_id__cA"></span><span class="target" id="structespnow__prov__responder__s_1a5a09c86d9c41c9753c5d1f34e6cd0a6a"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">product_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_responder_s10product_idE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Product ID </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_responder_s11device_nameE">
+<span id="_CPPv3N23espnow_prov_responder_s11device_nameE"></span><span id="_CPPv2N23espnow_prov_responder_s11device_nameE"></span><span id="espnow_prov_responder_s::device_name__cA"></span><span class="target" id="structespnow__prov__responder__s_1a2968a217588ec0d9682d3fb65e9f3f05"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">device_name</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_responder_s11device_nameE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Device name </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418espnow_prov_wifi_s">
+<span id="_CPPv318espnow_prov_wifi_s"></span><span id="_CPPv218espnow_prov_wifi_s"></span><span id="espnow_prov_wifi_s"></span><span class="target" id="structespnow__prov__wifi__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_wifi_s</span></span></span><a class="headerlink" href="#_CPPv418espnow_prov_wifi_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>WiFi configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_prov_wifi_s4modeE">
+<span id="_CPPv3N18espnow_prov_wifi_s4modeE"></span><span id="_CPPv2N18espnow_prov_wifi_s4modeE"></span><span id="espnow_prov_wifi_s::mode__wifi_mode_t"></span><span class="target" id="structespnow__prov__wifi__s_1a9c2e716b4ba4f08270a60f4f3898d4ca"></span><span class="n"><span class="pre">wifi_mode_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mode</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_prov_wifi_s4modeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>WiFi mode </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_prov_wifi_s2apE">
+<span id="_CPPv3N18espnow_prov_wifi_s2apE"></span><span id="_CPPv2N18espnow_prov_wifi_s2apE"></span><span id="espnow_prov_wifi_s::ap__wifi_ap_config_t"></span><span class="target" id="structespnow__prov__wifi__s_1af1b2be18a2aef9db68be24159350affa"></span><span class="n"><span class="pre">wifi_ap_config_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ap</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_prov_wifi_s2apE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Configuration of AP </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_prov_wifi_s3staE">
+<span id="_CPPv3N18espnow_prov_wifi_s3staE"></span><span id="_CPPv2N18espnow_prov_wifi_s3staE"></span><span id="espnow_prov_wifi_s::sta__wifi_sta_config_t"></span><span class="target" id="structespnow__prov__wifi__s_1aa53737ab03bf83f09a49311d6677c803"></span><span class="n"><span class="pre">wifi_sta_config_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sta</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_prov_wifi_s3staE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Configuration of STA </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_prov_wifi_s5tokenE">
+<span id="_CPPv3N18espnow_prov_wifi_s5tokenE"></span><span id="_CPPv2N18espnow_prov_wifi_s5tokenE"></span><span id="espnow_prov_wifi_s::token__cA"></span><span class="target" id="structespnow__prov__wifi__s_1a55d7b26dfea5b98a48ef28661bf5b2fa"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">token</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">32</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18espnow_prov_wifi_s5tokenE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Token of the WiFi configuration </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_prov_wifi_s11custom_sizeE">
+<span id="_CPPv3N18espnow_prov_wifi_s11custom_sizeE"></span><span id="_CPPv2N18espnow_prov_wifi_s11custom_sizeE"></span><span id="espnow_prov_wifi_s::custom_size__uint8_t"></span><span class="target" id="structespnow__prov__wifi__s_1af1332547e8929d227d98c4829ec5ee49"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">custom_size</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_prov_wifi_s11custom_sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Customer data size </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_prov_wifi_s11custom_dataE">
+<span id="_CPPv3N18espnow_prov_wifi_s11custom_dataE"></span><span id="_CPPv2N18espnow_prov_wifi_s11custom_dataE"></span><span id="espnow_prov_wifi_s::custom_data__uint8_tA"></span><span class="target" id="structespnow__prov__wifi__s_1a6f2e0f3b3709732b3343ae03d278ed4b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">custom_data</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18espnow_prov_wifi_s11custom_dataE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Customer data </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="macros">
+<h3>Macros<a class="headerlink" href="#macros" title="Permalink to this headline"></a></h3>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_PROV_CUSTOM_MAX_SIZE">
+<span class="target" id="espnow__prov_8h_1ae967d4826b56f51760da61afe9c135db"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_PROV_CUSTOM_MAX_SIZE</span></span></span><a class="headerlink" href="#c.ESPNOW_PROV_CUSTOM_MAX_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_prov_initiator_t">
+<span id="_CPPv323espnow_prov_initiator_t"></span><span id="_CPPv223espnow_prov_initiator_t"></span><span id="espnow_prov_initiator_t"></span><span class="target" id="espnow__prov_8h_1a9b6d3fa2670bdff8fd14a91c0f7647b9"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_prov_initiator_s" title="espnow_prov_initiator_s"><span class="n"><span class="pre">espnow_prov_initiator_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_initiator_t</span></span></span><a class="headerlink" href="#_CPPv423espnow_prov_initiator_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initiator information. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_prov_responder_t">
+<span id="_CPPv323espnow_prov_responder_t"></span><span id="_CPPv223espnow_prov_responder_t"></span><span id="espnow_prov_responder_t"></span><span class="target" id="espnow__prov_8h_1a945662cdb50567217833a9d7ea24ae15"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_prov_responder_s" title="espnow_prov_responder_s"><span class="n"><span class="pre">espnow_prov_responder_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_responder_t</span></span></span><a class="headerlink" href="#_CPPv423espnow_prov_responder_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder information. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv418espnow_prov_wifi_t">
+<span id="_CPPv318espnow_prov_wifi_t"></span><span id="_CPPv218espnow_prov_wifi_t"></span><span id="espnow_prov_wifi_t"></span><span class="target" id="espnow__prov_8h_1a29cac9e9e1f20f4b0847fe206c742317"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418espnow_prov_wifi_s" title="espnow_prov_wifi_s"><span class="n"><span class="pre">espnow_prov_wifi_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_wifi_t</span></span></span><a class="headerlink" href="#_CPPv418espnow_prov_wifi_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>WiFi configuration. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv416espnow_prov_cb_t">
+<span id="_CPPv316espnow_prov_cb_t"></span><span id="_CPPv216espnow_prov_cb_t"></span><span id="espnow_prov_cb_t"></span><span class="target" id="espnow__prov_8h_1a4563342cb49b4f8ba82dc965f98da411"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_cb_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src_addr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">wifi_pkt_rx_ctrl_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rx_ctrl</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv416espnow_prov_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The provision data callback function. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>If it is WiFi configuration callback function, the data buffer stores WiFi configuration.</p>
+</dd>
+<dt><strong>Attention</strong></dt><dd><p>If it is initiator information callback function, the data buffer stores initiator information. Initiator information should be checked in the function. If the function returns true, responder will send WiFi configuration to initiator. If the function returns false, responder will not send WiFi configuration to initiator.</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param src_addr</dt>
+<dd class="field-odd"><p><strong>[in]</strong> mac address of sender </p>
+</dd>
+<dt class="field-even">Param data</dt>
+<dd class="field-even"><p><strong>[in]</strong> WiFi configuration from responder or initiator information from initiator </p>
+</dd>
+<dt class="field-odd">Param size</dt>
+<dd class="field-odd"><p><strong>[in]</strong> data size </p>
+</dd>
+<dt class="field-even">Param rx_ctrl</dt>
+<dd class="field-even"><p><strong>[in]</strong> received packet radio metadata header</p>
+</dd>
+<dt class="field-odd">Return</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_ERR_INVALID_ARG </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline"></a></h3>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_prov_auth_mode_t">
+<span id="_CPPv323espnow_prov_auth_mode_t"></span><span id="_CPPv223espnow_prov_auth_mode_t"></span><span class="target" id="espnow__prov_8h_1adbad05a9da56a437259a94804eea6623"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_prov_auth_mode_t</span></span></span><a class="headerlink" href="#_CPPv423espnow_prov_auth_mode_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Enumerated list of provision authentication mode. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_INVALIDE">
+<span id="_CPPv3N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_INVALIDE"></span><span id="_CPPv2N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_INVALIDE"></span><span class="target" id="espnow__prov_8h_1adbad05a9da56a437259a94804eea6623a9da1b9843c4748f360de41672992f1bb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_PROV_AUTH_INVALID</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_INVALIDE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Invalid mode </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_PRODUCTE">
+<span id="_CPPv3N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_PRODUCTE"></span><span id="_CPPv2N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_PRODUCTE"></span><span class="target" id="espnow__prov_8h_1adbad05a9da56a437259a94804eea6623a84de2cecda4b7717c2ff2063982d6c17"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_PROV_AUTH_PRODUCT</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_auth_mode_t24ESPNOW_PROV_AUTH_PRODUCTE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Product authentication </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_auth_mode_t23ESPNOW_PROV_AUTH_DEVICEE">
+<span id="_CPPv3N23espnow_prov_auth_mode_t23ESPNOW_PROV_AUTH_DEVICEE"></span><span id="_CPPv2N23espnow_prov_auth_mode_t23ESPNOW_PROV_AUTH_DEVICEE"></span><span class="target" id="espnow__prov_8h_1adbad05a9da56a437259a94804eea6623a3fd61cc95f5883254550b78622702bcd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_PROV_AUTH_DEVICE</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_auth_mode_t23ESPNOW_PROV_AUTH_DEVICEE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Device authentication </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_prov_auth_mode_t21ESPNOW_PROV_AUTH_CERTE">
+<span id="_CPPv3N23espnow_prov_auth_mode_t21ESPNOW_PROV_AUTH_CERTE"></span><span id="_CPPv2N23espnow_prov_auth_mode_t21ESPNOW_PROV_AUTH_CERTE"></span><span class="target" id="espnow__prov_8h_1adbad05a9da56a437259a94804eea6623abcd40200e75e9494f047b3c4a055c5de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_PROV_AUTH_CERT</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_prov_auth_mode_t21ESPNOW_PROV_AUTH_CERTE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Certificate authentication </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Provisioning API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../security/index.html" class="btn btn-neutral float-right" title="Security API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

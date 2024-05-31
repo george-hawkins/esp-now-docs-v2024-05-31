@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/control/espnow_ctrl';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Debug API" href="../debug/index.html" />
+    <link rel="prev" title="Control API" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Control API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Control API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../debug/index.html">Debug API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota/index.html">OTA API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../provisioning/index.html">Provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/index.html">Security API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/index.html">Utils API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">Control API</a> &raquo;</li>
+      <li>Control API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/control/espnow_ctrl.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="control-api">
+<h1>Control API<a class="headerlink" href="#control-api" title="Permalink to this headline"></a></h1>
+<p>Control layer related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/control/include/espnow_ctrl.h">src/control/include/espnow_ctrl.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_ctrl_initiator_bind18espnow_attribute_tb">
+<span id="_CPPv326espnow_ctrl_initiator_bind18espnow_attribute_tb"></span><span id="_CPPv226espnow_ctrl_initiator_bind18espnow_attribute_tb"></span><span id="espnow_ctrl_initiator_bind__espnow_attribute_t.b"></span><span class="target" id="espnow__ctrl_8h_1a7ef38db752851f33298fb6d26f69dd4c"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_initiator_bind</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">initiator_attribute</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">enable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_ctrl_initiator_bind18espnow_attribute_tb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The initiator sends a broadcast bind frame. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initiator_attribute</strong> – <strong>[in]</strong> initiator attribute </p></li>
+<li><p><strong>enable</strong> – <strong>[in]</strong> bind or unbind</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>TRUE</p></li>
+<li><p>FALSE </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_ctrl_initiator_send18espnow_attribute_t18espnow_attribute_t8uint32_t">
+<span id="_CPPv326espnow_ctrl_initiator_send18espnow_attribute_t18espnow_attribute_t8uint32_t"></span><span id="_CPPv226espnow_ctrl_initiator_send18espnow_attribute_t18espnow_attribute_t8uint32_t"></span><span id="espnow_ctrl_initiator_send__espnow_attribute_t.espnow_attribute_t.uint32_t"></span><span class="target" id="espnow__ctrl_8h_1a0d130d98cf1bf474665d68645a4300e2"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_initiator_send</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">initiator_attribute</span></span>, <a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">responder_attribute</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">responder_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_ctrl_initiator_send18espnow_attribute_t18espnow_attribute_t8uint32_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The initiator sends a broadcast control data frame. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initiator_attribute</strong> – <strong>[in]</strong> the sending initiator’s attribute </p></li>
+<li><p><strong>responder_attribute</strong> – <strong>[in]</strong> the sending responder’s attribute </p></li>
+<li><p><strong>responder_value</strong> – <strong>[in]</strong> the sending responder value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_ctrl_responder_bind8uint32_t6int8_t21espnow_ctrl_bind_cb_t">
+<span id="_CPPv326espnow_ctrl_responder_bind8uint32_t6int8_t21espnow_ctrl_bind_cb_t"></span><span id="_CPPv226espnow_ctrl_responder_bind8uint32_t6int8_t21espnow_ctrl_bind_cb_t"></span><span id="espnow_ctrl_responder_bind__uint32_t.int8_t.espnow_ctrl_bind_cb_t"></span><span class="target" id="espnow__ctrl_8h_1af0f8d70683e2dfcb72fcf1eac317ad7a"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_responder_bind</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ms</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">rssi</span></span>, <a class="reference internal" href="#_CPPv421espnow_ctrl_bind_cb_t" title="espnow_ctrl_bind_cb_t"><span class="n"><span class="pre">espnow_ctrl_bind_cb_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_ctrl_responder_bind8uint32_t6int8_t21espnow_ctrl_bind_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The responder creates a bind task to process the received bind frame. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>The bind frame will be processed if the callback function returns true and wait time is not timeout, and bind frame’s RSSI is higher than the set RSSI.</p>
+</dd>
+<dt><strong>Attention</strong></dt><dd><p>The responder will bind or unbind with the sender according to the value in bind frame.</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wait_ms</strong> – <strong>[in]</strong> maximum waiting bind time in millisecond </p></li>
+<li><p><strong>rssi</strong> – <strong>[in]</strong> the minimum bind frame RSSI </p></li>
+<li><p><strong>cb</strong> – <strong>[in]</strong> the bind callback function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_ctrl_responder_data21espnow_ctrl_data_cb_t">
+<span id="_CPPv326espnow_ctrl_responder_data21espnow_ctrl_data_cb_t"></span><span id="_CPPv226espnow_ctrl_responder_data21espnow_ctrl_data_cb_t"></span><span id="espnow_ctrl_responder_data__espnow_ctrl_data_cb_t"></span><span class="target" id="espnow__ctrl_8h_1a19d127abbfed70e3aef003cca937aee6"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_responder_data</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv421espnow_ctrl_data_cb_t" title="espnow_ctrl_data_cb_t"><span class="n"><span class="pre">espnow_ctrl_data_cb_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_ctrl_responder_data21espnow_ctrl_data_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The responder registers control data callback function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cb</strong> – <strong>[in]</strong> the control data callback function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434espnow_ctrl_responder_get_bindlistP23espnow_ctrl_bind_info_tP6size_t">
+<span id="_CPPv334espnow_ctrl_responder_get_bindlistP23espnow_ctrl_bind_info_tP6size_t"></span><span id="_CPPv234espnow_ctrl_responder_get_bindlistP23espnow_ctrl_bind_info_tP6size_t"></span><span id="espnow_ctrl_responder_get_bindlist__espnow_ctrl_bind_info_tP.sP"></span><span class="target" id="espnow__ctrl_8h_1a5ab3afd095477d8656bc3c2a05c558ff"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_responder_get_bindlist</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv423espnow_ctrl_bind_info_t" title="espnow_ctrl_bind_info_t"><span class="n"><span class="pre">espnow_ctrl_bind_info_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">list</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434espnow_ctrl_responder_get_bindlistP23espnow_ctrl_bind_info_tP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The responder gets bound list. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list</strong> – <strong>[out]</strong> the buffer that stores the bound list </p></li>
+<li><p><strong>size</strong> – <strong>[inout]</strong> input maximum bound list size, output the real bound list size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434espnow_ctrl_responder_set_bindlistPK23espnow_ctrl_bind_info_t">
+<span id="_CPPv334espnow_ctrl_responder_set_bindlistPK23espnow_ctrl_bind_info_t"></span><span id="_CPPv234espnow_ctrl_responder_set_bindlistPK23espnow_ctrl_bind_info_t"></span><span id="espnow_ctrl_responder_set_bindlist__espnow_ctrl_bind_info_tCP"></span><span class="target" id="espnow__ctrl_8h_1a8a95735b2ea6aac3a53db4123e2100cf"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_responder_set_bindlist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_ctrl_bind_info_t" title="espnow_ctrl_bind_info_t"><span class="n"><span class="pre">espnow_ctrl_bind_info_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434espnow_ctrl_responder_set_bindlistPK23espnow_ctrl_bind_info_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The responder sets bound list. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>The bound information will be stored to flash</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>info</strong> – <strong>[in]</strong> the bound information to be set</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437espnow_ctrl_responder_remove_bindlistPK23espnow_ctrl_bind_info_t">
+<span id="_CPPv337espnow_ctrl_responder_remove_bindlistPK23espnow_ctrl_bind_info_t"></span><span id="_CPPv237espnow_ctrl_responder_remove_bindlistPK23espnow_ctrl_bind_info_t"></span><span id="espnow_ctrl_responder_remove_bindlist__espnow_ctrl_bind_info_tCP"></span><span class="target" id="espnow__ctrl_8h_1aeac018d789d67383c7329d5abd078764"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_responder_remove_bindlist</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_ctrl_bind_info_t" title="espnow_ctrl_bind_info_t"><span class="n"><span class="pre">espnow_ctrl_bind_info_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437espnow_ctrl_responder_remove_bindlistPK23espnow_ctrl_bind_info_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The responder removes bound list. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>The bound information will be removed from flash</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>info</strong> – <strong>[in]</strong> the bound information to be removed</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv436espnow_ctrl_responder_clear_bindlistv">
+<span id="_CPPv336espnow_ctrl_responder_clear_bindlistv"></span><span id="_CPPv236espnow_ctrl_responder_clear_bindlistv"></span><span id="espnow_ctrl_responder_clear_bindlist__void"></span><span class="target" id="espnow__ctrl_8h_1a753c8da1963f9d0e72d942ebb90960a6"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_responder_clear_bindlist</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv436espnow_ctrl_responder_clear_bindlistv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Remove all bound devices from bindlist. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416espnow_ctrl_sendK13espnow_addr_tPK18espnow_ctrl_data_tPK19espnow_frame_head_t10TickType_t">
+<span id="_CPPv316espnow_ctrl_sendK13espnow_addr_tPK18espnow_ctrl_data_tPK19espnow_frame_head_t10TickType_t"></span><span id="_CPPv216espnow_ctrl_sendK13espnow_addr_tPK18espnow_ctrl_data_tPK19espnow_frame_head_t10TickType_t"></span><span id="espnow_ctrl_send__espnow_addr_tC.espnow_ctrl_data_tCP.espnow_frame_head_tCP.TickType_t"></span><span class="target" id="espnow__ctrl_8h_1a8d900d935cd0604548de8a0f1a61db48"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_send</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dest_addr</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418espnow_ctrl_data_t" title="espnow_ctrl_data_t"><span class="n"><span class="pre">espnow_ctrl_data_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../espnow/espnow.html#_CPPv419espnow_frame_head_t" title="espnow_frame_head_t"><span class="n"><span class="pre">espnow_frame_head_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">frame_head</span></span>, <span class="n"><span class="pre">TickType_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416espnow_ctrl_sendK13espnow_addr_tPK18espnow_ctrl_data_tPK19espnow_frame_head_t10TickType_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Send control data frame. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dest_addr</strong> – <strong>[in]</strong> dest_addr is not used </p></li>
+<li><p><strong>data</strong> – <strong>[in]</strong> control data </p></li>
+<li><p><strong>frame_head</strong> – <strong>[in]</strong> frame header must not be NULL </p></li>
+<li><p><strong>wait_ticks</strong> – <strong>[in]</strong> the maximum waiting time in ticks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416espnow_ctrl_recv25espnow_ctrl_data_raw_cb_t">
+<span id="_CPPv316espnow_ctrl_recv25espnow_ctrl_data_raw_cb_t"></span><span id="_CPPv216espnow_ctrl_recv25espnow_ctrl_data_raw_cb_t"></span><span id="espnow_ctrl_recv__espnow_ctrl_data_raw_cb_t"></span><span class="target" id="espnow__ctrl_8h_1a47d2d03407f132d9a1b90ca40a74e8ba"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_recv</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv425espnow_ctrl_data_raw_cb_t" title="espnow_ctrl_data_raw_cb_t"><span class="n"><span class="pre">espnow_ctrl_data_raw_cb_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416espnow_ctrl_recv25espnow_ctrl_data_raw_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The responder registers raw control data callback function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cb</strong> – <strong>[in]</strong> the raw control data callback function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK: succeed</p></li>
+<li><p>others: fail _cplusplus </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_ctrl_bind_info_s">
+<span id="_CPPv323espnow_ctrl_bind_info_s"></span><span id="_CPPv223espnow_ctrl_bind_info_s"></span><span id="espnow_ctrl_bind_info_s"></span><span class="target" id="structespnow__ctrl__bind__info__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_bind_info_s</span></span></span><a class="headerlink" href="#_CPPv423espnow_ctrl_bind_info_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bind information from initiator. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_ctrl_bind_info_s3macE">
+<span id="_CPPv3N23espnow_ctrl_bind_info_s3macE"></span><span id="_CPPv2N23espnow_ctrl_bind_info_s3macE"></span><span id="espnow_ctrl_bind_info_s::mac__uint8_tA"></span><span class="target" id="structespnow__ctrl__bind__info__s_1a7e10c108f3eef855271147d3bebd6c02"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mac</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23espnow_ctrl_bind_info_s3macE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initiator’s MAC address </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23espnow_ctrl_bind_info_s19initiator_attributeE">
+<span id="_CPPv3N23espnow_ctrl_bind_info_s19initiator_attributeE"></span><span id="_CPPv2N23espnow_ctrl_bind_info_s19initiator_attributeE"></span><span id="espnow_ctrl_bind_info_s::initiator_attribute__espnow_attribute_t"></span><span class="target" id="structespnow__ctrl__bind__info__s_1a00ca10c54690d77fa35d0c1d26261588"></span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initiator_attribute</span></span></span><a class="headerlink" href="#_CPPv4N23espnow_ctrl_bind_info_s19initiator_attributeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initiator’s attribute </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418espnow_ctrl_data_s">
+<span id="_CPPv318espnow_ctrl_data_s"></span><span id="_CPPv218espnow_ctrl_data_s"></span><span id="espnow_ctrl_data_s"></span><span class="target" id="structespnow__ctrl__data__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_data_s</span></span></span><a class="headerlink" href="#_CPPv418espnow_ctrl_data_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Control data from initiator. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s19initiator_attributeE">
+<span id="_CPPv3N18espnow_ctrl_data_s19initiator_attributeE"></span><span id="_CPPv2N18espnow_ctrl_data_s19initiator_attributeE"></span><span id="espnow_ctrl_data_s::initiator_attribute__espnow_attribute_t"></span><span class="target" id="structespnow__ctrl__data__s_1a9e38d92b8d8dbc839952157ae584c715"></span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initiator_attribute</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s19initiator_attributeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initiator’s attribute </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s19responder_attributeE">
+<span id="_CPPv3N18espnow_ctrl_data_s19responder_attributeE"></span><span id="_CPPv2N18espnow_ctrl_data_s19responder_attributeE"></span><span id="espnow_ctrl_data_s::responder_attribute__espnow_attribute_t"></span><span class="target" id="structespnow__ctrl__data__s_1a62e339d166a594e1f0e83f1ef30ed7fa"></span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">responder_attribute</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s19responder_attributeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Responder’s attribute </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s17responder_value_bE">
+<span id="_CPPv3N18espnow_ctrl_data_s17responder_value_bE"></span><span id="_CPPv2N18espnow_ctrl_data_s17responder_value_bE"></span><span id="espnow_ctrl_data_s::responder_value_b__b"></span><span class="target" id="structespnow__ctrl__data__s_1aa99a786c4edf1312027128bf5026cc30"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">responder_value_b</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s17responder_value_bE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Boolean </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s17responder_value_iE">
+<span id="_CPPv3N18espnow_ctrl_data_s17responder_value_iE"></span><span id="_CPPv2N18espnow_ctrl_data_s17responder_value_iE"></span><span id="espnow_ctrl_data_s::responder_value_i__i"></span><span class="target" id="structespnow__ctrl__data__s_1ace365573ec77294651b93524ecf1e0eb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">responder_value_i</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s17responder_value_iE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Integer </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s17responder_value_fE">
+<span id="_CPPv3N18espnow_ctrl_data_s17responder_value_fE"></span><span id="_CPPv2N18espnow_ctrl_data_s17responder_value_fE"></span><span id="espnow_ctrl_data_s::responder_value_f__float"></span><span class="target" id="structespnow__ctrl__data__s_1a7d17d8b4ce2aedb68a202a8d583fc693"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">responder_value_f</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s17responder_value_fE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Float </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s22responder_value_s_flagE">
+<span id="_CPPv3N18espnow_ctrl_data_s22responder_value_s_flagE"></span><span id="_CPPv2N18espnow_ctrl_data_s22responder_value_s_flagE"></span><span id="espnow_ctrl_data_s::responder_value_s_flag__uint32_t"></span><span class="target" id="structespnow__ctrl__data__s_1a5db74dfac4d6cf00319f7a373c5a0bb3"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">responder_value_s_flag</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s22responder_value_s_flagE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>String flag, the value is 0x00, 0x00, 0x00 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s22responder_value_s_sizeE">
+<span id="_CPPv3N18espnow_ctrl_data_s22responder_value_s_sizeE"></span><span id="_CPPv2N18espnow_ctrl_data_s22responder_value_s_sizeE"></span><span id="espnow_ctrl_data_s::responder_value_s_size__uint8_t"></span><span class="target" id="structespnow__ctrl__data__s_1a8d5f8348a9488e47433db3b11ecc3507"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">responder_value_s_size</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s22responder_value_s_sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>String length </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_ctrl_data_s17responder_value_sE">
+<span id="_CPPv3N18espnow_ctrl_data_s17responder_value_sE"></span><span id="_CPPv2N18espnow_ctrl_data_s17responder_value_sE"></span><span id="espnow_ctrl_data_s::responder_value_s__cA"></span><span class="target" id="structespnow__ctrl__data__s_1a18436efc9d479d68039f1bdc15657eee"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">responder_value_s</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18espnow_ctrl_data_s17responder_value_sE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>NULL terminated string </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="macros">
+<h3>Macros<a class="headerlink" href="#macros" title="Permalink to this headline"></a></h3>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_CTRL_BIND">
+<span class="target" id="espnow__ctrl_8h_1a26599db13f378ff4e4eb82e01686abe3"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_CTRL_BIND</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_CTRL_BIND" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Enumerated list of control event id. </p>
+<p>&lt; _cplusplus </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_EVENT_ESPNOW_CTRL_UNBIND">
+<span class="target" id="espnow__ctrl_8h_1a17fc7951c88d7e68000d1d123512903f"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_EVENT_ESPNOW_CTRL_UNBIND</span></span></span><a class="headerlink" href="#c.ESP_EVENT_ESPNOW_CTRL_UNBIND" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESPNOW_BIND_LIST_MAX_SIZE">
+<span class="target" id="espnow__ctrl_8h_1a3f43f6e7b7732798e14f06bcb611964c"></span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_BIND_LIST_MAX_SIZE</span></span></span><a class="headerlink" href="#c.ESPNOW_BIND_LIST_MAX_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Maximum number of device in bind list. </p>
+</dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423espnow_ctrl_bind_info_t">
+<span id="_CPPv323espnow_ctrl_bind_info_t"></span><span id="_CPPv223espnow_ctrl_bind_info_t"></span><span id="espnow_ctrl_bind_info_t"></span><span class="target" id="espnow__ctrl_8h_1ae0dff55146c30e8f282eb98eb052358f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423espnow_ctrl_bind_info_s" title="espnow_ctrl_bind_info_s"><span class="n"><span class="pre">espnow_ctrl_bind_info_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_bind_info_t</span></span></span><a class="headerlink" href="#_CPPv423espnow_ctrl_bind_info_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bind information from initiator. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv418espnow_ctrl_data_t">
+<span id="_CPPv318espnow_ctrl_data_t"></span><span id="_CPPv218espnow_ctrl_data_t"></span><span id="espnow_ctrl_data_t"></span><span class="target" id="espnow__ctrl_8h_1ac344645fcca9a54c2b3a290b4cc16990"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418espnow_ctrl_data_s" title="espnow_ctrl_data_s"><span class="n"><span class="pre">espnow_ctrl_data_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_data_t</span></span></span><a class="headerlink" href="#_CPPv418espnow_ctrl_data_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Control data from initiator. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_ctrl_bind_cb_t">
+<span id="_CPPv321espnow_ctrl_bind_cb_t"></span><span id="_CPPv221espnow_ctrl_bind_cb_t"></span><span id="espnow_ctrl_bind_cb_t"></span><span class="target" id="espnow__ctrl_8h_1a94bcb3b71a9de69a3e6e19a48c48186a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_bind_cb_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">initiator_attribute</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">mac</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv421espnow_ctrl_bind_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The bind callback function. </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>Each time a bind frame is received, the callback function will be called.</p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param initiator_attribute</dt>
+<dd class="field-odd"><p><strong>[in]</strong> initiator attribute </p>
+</dd>
+<dt class="field-even">Param mac</dt>
+<dd class="field-even"><p><strong>[in]</strong> initiator mac address </p>
+</dd>
+<dt class="field-odd">Param rssi</dt>
+<dd class="field-odd"><p><strong>[in]</strong> rssi of bind information</p>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>TRUE</p></li>
+<li><p>FALSE </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_ctrl_data_cb_t">
+<span id="_CPPv321espnow_ctrl_data_cb_t"></span><span id="_CPPv221espnow_ctrl_data_cb_t"></span><span id="espnow_ctrl_data_cb_t"></span><span class="target" id="espnow__ctrl_8h_1a34f48ad987fac7d5e0d626e551017873"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_data_cb_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">initiator_attribute</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418espnow_attribute_t" title="espnow_attribute_t"><span class="n"><span class="pre">espnow_attribute_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">responder_attribute</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">responder_value</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv421espnow_ctrl_data_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The control data callback function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param initiator_attribute</dt>
+<dd class="field-odd"><p><strong>[in]</strong> the received initiator’s attribute </p>
+</dd>
+<dt class="field-even">Param responder_attribute</dt>
+<dd class="field-even"><p><strong>[in]</strong> the received responder’s attribute </p>
+</dd>
+<dt class="field-odd">Param responder_value</dt>
+<dd class="field-odd"><p><strong>[in]</strong> the received responder value </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_ctrl_data_raw_cb_t">
+<span id="_CPPv325espnow_ctrl_data_raw_cb_t"></span><span id="_CPPv225espnow_ctrl_data_raw_cb_t"></span><span id="espnow_ctrl_data_raw_cb_t"></span><span class="target" id="espnow__ctrl_8h_1acd8cee56852606f73af56882a9893784"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">espnow_ctrl_data_raw_cb_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../espnow/espnow.html#_CPPv413espnow_addr_t" title="espnow_addr_t"><span class="n"><span class="pre">espnow_addr_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">src_addr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418espnow_ctrl_data_t" title="espnow_ctrl_data_t"><span class="n"><span class="pre">espnow_ctrl_data_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">wifi_pkt_rx_ctrl_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rx_ctrl</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv425espnow_ctrl_data_raw_cb_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The raw control data callback function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param src_addr</dt>
+<dd class="field-odd"><p><strong>[in]</strong> MAC address of sender </p>
+</dd>
+<dt class="field-even">Param data</dt>
+<dd class="field-even"><p><strong>[in]</strong> control data from sender </p>
+</dd>
+<dt class="field-odd">Param rx_ctrl</dt>
+<dd class="field-odd"><p><strong>[in]</strong> received packet radio metadata header </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline"></a></h3>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418espnow_attribute_t">
+<span id="_CPPv318espnow_attribute_t"></span><span id="_CPPv218espnow_attribute_t"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_attribute_t</span></span></span><a class="headerlink" href="#_CPPv418espnow_attribute_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Control attribute. The high byte is device type, the low byte is device attribute. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BASEE">
+<span id="_CPPv3N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BASEE"></span><span id="_CPPv2N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BASEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a9e15d537ffa0e7742a1a1b1ff215649e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BASE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BASEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_POWERE">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_POWERE"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_POWERE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a5bb6acaa1d5711f3495bef613b1682e6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_POWER</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_POWERE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t26ESPNOW_ATTRIBUTE_POWER_ADDE">
+<span id="_CPPv3N18espnow_attribute_t26ESPNOW_ATTRIBUTE_POWER_ADDE"></span><span id="_CPPv2N18espnow_attribute_t26ESPNOW_ATTRIBUTE_POWER_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55aeb6ce54e8c76e1accadf7b0b1b81df87"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_POWER_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t26ESPNOW_ATTRIBUTE_POWER_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t26ESPNOW_ATTRIBUTE_ATTRIBUTEE">
+<span id="_CPPv3N18espnow_attribute_t26ESPNOW_ATTRIBUTE_ATTRIBUTEE"></span><span id="_CPPv2N18espnow_attribute_t26ESPNOW_ATTRIBUTE_ATTRIBUTEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ac2c01a8fefef0e2e69c60f9f91dbf415"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_ATTRIBUTE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t26ESPNOW_ATTRIBUTE_ATTRIBUTEE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>light </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t27ESPNOW_ATTRIBUTE_LIGHT_BASEE">
+<span id="_CPPv3N18espnow_attribute_t27ESPNOW_ATTRIBUTE_LIGHT_BASEE"></span><span id="_CPPv2N18espnow_attribute_t27ESPNOW_ATTRIBUTE_LIGHT_BASEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a7b779086ba21525f45ab3b6934c8ae19"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_LIGHT_BASE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t27ESPNOW_ATTRIBUTE_LIGHT_BASEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t27ESPNOW_ATTRIBUTE_BRIGHTNESSE">
+<span id="_CPPv3N18espnow_attribute_t27ESPNOW_ATTRIBUTE_BRIGHTNESSE"></span><span id="_CPPv2N18espnow_attribute_t27ESPNOW_ATTRIBUTE_BRIGHTNESSE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55af55380014d304ea120d043d38fb77c21"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BRIGHTNESS</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t27ESPNOW_ATTRIBUTE_BRIGHTNESSE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t31ESPNOW_ATTRIBUTE_BRIGHTNESS_ADDE">
+<span id="_CPPv3N18espnow_attribute_t31ESPNOW_ATTRIBUTE_BRIGHTNESS_ADDE"></span><span id="_CPPv2N18espnow_attribute_t31ESPNOW_ATTRIBUTE_BRIGHTNESS_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ad010519f462bac892b68ee876b6cdc98"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BRIGHTNESS_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t31ESPNOW_ATTRIBUTE_BRIGHTNESS_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t20ESPNOW_ATTRIBUTE_HUEE">
+<span id="_CPPv3N18espnow_attribute_t20ESPNOW_ATTRIBUTE_HUEE"></span><span id="_CPPv2N18espnow_attribute_t20ESPNOW_ATTRIBUTE_HUEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a75a8809e89ffbc0ca39b36fde5e54e34"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_HUE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t20ESPNOW_ATTRIBUTE_HUEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t24ESPNOW_ATTRIBUTE_HUE_ADDE">
+<span id="_CPPv3N18espnow_attribute_t24ESPNOW_ATTRIBUTE_HUE_ADDE"></span><span id="_CPPv2N18espnow_attribute_t24ESPNOW_ATTRIBUTE_HUE_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ab2e5f1448ab8e075a885faccaca95c1a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_HUE_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t24ESPNOW_ATTRIBUTE_HUE_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t27ESPNOW_ATTRIBUTE_SATURATIONE">
+<span id="_CPPv3N18espnow_attribute_t27ESPNOW_ATTRIBUTE_SATURATIONE"></span><span id="_CPPv2N18espnow_attribute_t27ESPNOW_ATTRIBUTE_SATURATIONE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a4c70bbed9f13e6f98ab26376449cd6b0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_SATURATION</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t27ESPNOW_ATTRIBUTE_SATURATIONE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t31ESPNOW_ATTRIBUTE_SATURATION_ADDE">
+<span id="_CPPv3N18espnow_attribute_t31ESPNOW_ATTRIBUTE_SATURATION_ADDE"></span><span id="_CPPv2N18espnow_attribute_t31ESPNOW_ATTRIBUTE_SATURATION_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a3e9e22e81458b68fbbc7480ded705c1b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_SATURATION_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t31ESPNOW_ATTRIBUTE_SATURATION_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_WARME">
+<span id="_CPPv3N18espnow_attribute_t21ESPNOW_ATTRIBUTE_WARME"></span><span id="_CPPv2N18espnow_attribute_t21ESPNOW_ATTRIBUTE_WARME"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a23fef41ba47103f8df93ebe9da204d12"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_WARM</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_WARME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_WARM_ADDE">
+<span id="_CPPv3N18espnow_attribute_t25ESPNOW_ATTRIBUTE_WARM_ADDE"></span><span id="_CPPv2N18espnow_attribute_t25ESPNOW_ATTRIBUTE_WARM_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ac69211ef03944c98f1a1b044af6ffd71"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_WARM_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_WARM_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_COLDE">
+<span id="_CPPv3N18espnow_attribute_t21ESPNOW_ATTRIBUTE_COLDE"></span><span id="_CPPv2N18espnow_attribute_t21ESPNOW_ATTRIBUTE_COLDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a09bc4695384d15abc67bfc76b5db85ec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_COLD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_COLDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_COLD_ADDE">
+<span id="_CPPv3N18espnow_attribute_t25ESPNOW_ATTRIBUTE_COLD_ADDE"></span><span id="_CPPv2N18espnow_attribute_t25ESPNOW_ATTRIBUTE_COLD_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ab6914c4042aa79d9020c98efab961990"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_COLD_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_COLD_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t20ESPNOW_ATTRIBUTE_REDE">
+<span id="_CPPv3N18espnow_attribute_t20ESPNOW_ATTRIBUTE_REDE"></span><span id="_CPPv2N18espnow_attribute_t20ESPNOW_ATTRIBUTE_REDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a5437e7349ed1a06b206be0667d0ec6d1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_RED</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t20ESPNOW_ATTRIBUTE_REDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t24ESPNOW_ATTRIBUTE_RED_ADDE">
+<span id="_CPPv3N18espnow_attribute_t24ESPNOW_ATTRIBUTE_RED_ADDE"></span><span id="_CPPv2N18espnow_attribute_t24ESPNOW_ATTRIBUTE_RED_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ad357db5b3c7c2af8b99e033855bd93fb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_RED_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t24ESPNOW_ATTRIBUTE_RED_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_GREENE">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_GREENE"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_GREENE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a7880727ed9aed68b7119f6e26bf2f622"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_GREEN</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_GREENE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t26ESPNOW_ATTRIBUTE_GREEN_ADDE">
+<span id="_CPPv3N18espnow_attribute_t26ESPNOW_ATTRIBUTE_GREEN_ADDE"></span><span id="_CPPv2N18espnow_attribute_t26ESPNOW_ATTRIBUTE_GREEN_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55aa31982dc81dec5713782de5c0111685c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_GREEN_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t26ESPNOW_ATTRIBUTE_GREEN_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BLUEE">
+<span id="_CPPv3N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BLUEE"></span><span id="_CPPv2N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BLUEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a1e0175a4bdc09179430d18dd35afe532"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BLUE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_BLUEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_BLUE_ADDE">
+<span id="_CPPv3N18espnow_attribute_t25ESPNOW_ATTRIBUTE_BLUE_ADDE"></span><span id="_CPPv2N18espnow_attribute_t25ESPNOW_ATTRIBUTE_BLUE_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ab1bc447c0165f7eebf5578f02f73df01"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BLUE_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_BLUE_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_MODEE">
+<span id="_CPPv3N18espnow_attribute_t21ESPNOW_ATTRIBUTE_MODEE"></span><span id="_CPPv2N18espnow_attribute_t21ESPNOW_ATTRIBUTE_MODEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a805d15a8d84cf77abb0363b8f40b0db2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_MODE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t21ESPNOW_ATTRIBUTE_MODEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_MODE_ADDE">
+<span id="_CPPv3N18espnow_attribute_t25ESPNOW_ATTRIBUTE_MODE_ADDE"></span><span id="_CPPv2N18espnow_attribute_t25ESPNOW_ATTRIBUTE_MODE_ADDE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a08e27a6d34eebdd5014d60f871346740"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_MODE_ADD</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t25ESPNOW_ATTRIBUTE_MODE_ADDE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>button </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t28ESPNOW_ATTRIBUTE_BUTTON_BASEE">
+<span id="_CPPv3N18espnow_attribute_t28ESPNOW_ATTRIBUTE_BUTTON_BASEE"></span><span id="_CPPv2N18espnow_attribute_t28ESPNOW_ATTRIBUTE_BUTTON_BASEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a993814e02683b4f1a44fdd36c0171129"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BUTTON_BASE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t28ESPNOW_ATTRIBUTE_BUTTON_BASEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_1E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_1E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_1E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a2856a128a0c543013733329b5907af32"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_1</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_1E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_2E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_2E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_2E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a255d8a8224a9c75a38de3e671c310f9c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_2</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_2E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_3E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_3E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_3E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a391111610e28e1700252ebc69c57c0da"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_3</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_3E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_4E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_4E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_4E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55af7e2b5ed72d889bc458d5079110f82e3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_4</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_4E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_5E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_5E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_5E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a76c23f313d72c2946d5ffba751527f43"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_5</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_5E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_6E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_6E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_6E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55aa77da1f9d1e7cd8eada0a108cc42eb57"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_6</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_6E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_7E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_7E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_7E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a7bc1e71ff12d7cb70296aa9fb1bbf339"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_7</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_7E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_8E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_8E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_8E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55ad2935f6ae569f0bb09cb5c1369985dc2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_8</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_8E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_9E">
+<span id="_CPPv3N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_9E"></span><span id="_CPPv2N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_9E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a88b81c9d1a850654d9258191d8c85caa"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_9</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t22ESPNOW_ATTRIBUTE_KEY_9E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t23ESPNOW_ATTRIBUTE_KEY_10E">
+<span id="_CPPv3N18espnow_attribute_t23ESPNOW_ATTRIBUTE_KEY_10E"></span><span id="_CPPv2N18espnow_attribute_t23ESPNOW_ATTRIBUTE_KEY_10E"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55af4afe276a83adafeeaf9f56d3365e903"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_KEY_10</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t23ESPNOW_ATTRIBUTE_KEY_10E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>battery </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t29ESPNOW_ATTRIBUTE_BATTERY_BASEE">
+<span id="_CPPv3N18espnow_attribute_t29ESPNOW_ATTRIBUTE_BATTERY_BASEE"></span><span id="_CPPv2N18espnow_attribute_t29ESPNOW_ATTRIBUTE_BATTERY_BASEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a6f8c22fa0c3b767c9bf5b13512d35fe0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BATTERY_BASE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t29ESPNOW_ATTRIBUTE_BATTERY_BASEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t35ESPNOW_ATTRIBUTE_STATUS_LOW_BATTERYE">
+<span id="_CPPv3N18espnow_attribute_t35ESPNOW_ATTRIBUTE_STATUS_LOW_BATTERYE"></span><span id="_CPPv2N18espnow_attribute_t35ESPNOW_ATTRIBUTE_STATUS_LOW_BATTERYE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a043474ef0dfb8df3d1196e1841c5ec5d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_STATUS_LOW_BATTERY</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t35ESPNOW_ATTRIBUTE_STATUS_LOW_BATTERYE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t30ESPNOW_ATTRIBUTE_BATTERY_LEVELE">
+<span id="_CPPv3N18espnow_attribute_t30ESPNOW_ATTRIBUTE_BATTERY_LEVELE"></span><span id="_CPPv2N18espnow_attribute_t30ESPNOW_ATTRIBUTE_BATTERY_LEVELE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a388df93073f649b30855a8178f1aacd4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_BATTERY_LEVEL</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t30ESPNOW_ATTRIBUTE_BATTERY_LEVELE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18espnow_attribute_t31ESPNOW_ATTRIBUTE_CHARGING_STATEE">
+<span id="_CPPv3N18espnow_attribute_t31ESPNOW_ATTRIBUTE_CHARGING_STATEE"></span><span id="_CPPv2N18espnow_attribute_t31ESPNOW_ATTRIBUTE_CHARGING_STATEE"></span><span class="target" id="espnow__ctrl_8h_1a51d1b70699d72f1630d68f5dba968a55a721fc146eb6d7587b808dc4c7835c881"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ESPNOW_ATTRIBUTE_CHARGING_STATE</span></span></span><a class="headerlink" href="#_CPPv4N18espnow_attribute_t31ESPNOW_ATTRIBUTE_CHARGING_STATEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Control API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../debug/index.html" class="btn btn-neutral float-right" title="Debug API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

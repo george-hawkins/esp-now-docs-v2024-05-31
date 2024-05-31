@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utils API - ESP32 -  &mdash; ESP Zigbee SDK v2024-05-31 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+
+    
+        
+
+    <script type="text/javascript">
+        DOCUMENTATION_OPTIONS.PAGENAME = 'api-reference/utils/espnow_utils';
+        DOCUMENTATION_OPTIONS.PROJECT_SLUG = 'esp-now';
+        DOCUMENTATION_OPTIONS.LATEST_BRANCH_NAME = 'master';
+        DOCUMENTATION_OPTIONS.VERSIONS_URL = '_static/esp-now_versions.js';
+        DOCUMENTATION_OPTIONS.LANGUAGES = ["en"];
+        DOCUMENTATION_OPTIONS.IDF_TARGET = 'esp32';
+        DOCUMENTATION_OPTIONS.HAS_IDF_TARGETS = ["esp32", "esp32s3", "esp32c3", "esp32c2", "esp32c6"]
+        DOCUMENTATION_OPTIONS.RELEASE = 'v2024-05-31';
+    </script>
+
+    <script type="text/javascript" src="_static/esp-now_versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Storage API" href="espnow_storage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ESP Zigbee SDK
+            <img src="../../_static/espressif-logo.svg" class="logo" alt="Logo"/>
+          </a>
+
+          
+            <div class="selectors">
+              <select id="target-select" style="width: 150px;" hidden>
+                <option value="" disabled selected>Choose target...</option>
+              </select>
+            </div>
+          
+
+          <div class="selectors">
+            <select id="version-select" style="width: 150px;" hidden>
+              <option value="" disabled selected>Choose version...</option>
+            </select>
+          </div>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debug/index.html">Debug API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../espnow/index.html">ESPNOW API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota/index.html">OTA API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../provisioning/index.html">Provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/index.html">Security API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Utils API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="espnow_mem.html">Memory API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="espnow_storage.html">Storage API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Utils API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ESP Zigbee SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">API Reference</a> &raquo;</li>
+          <li><a href="index.html">Utils API</a> &raquo;</li>
+      <li>Utils API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/espressif/esp-now/blob/v2024-05-31/docs/en/api-reference/utils/espnow_utils.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utils-api">
+<h1>Utils API<a class="headerlink" href="#utils-api" title="Permalink to this headline"></a></h1>
+<p>Utils layer related APIs for ESP-NOW.</p>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h2>
+<section id="header-file">
+<h3>Header File<a class="headerlink" href="#header-file" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/espressif/esp-now/blob/v2024-05-31/src/utils/include/espnow_utils.h">src/utils/include/espnow_utils.h</a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413espnow_reboot10TickType_t">
+<span id="_CPPv313espnow_reboot10TickType_t"></span><span id="_CPPv213espnow_reboot10TickType_t"></span><span id="espnow_reboot__TickType_t"></span><span class="target" id="espnow__utils_8h_1a32c8107dc430b6c9a6c99d7715e1c579"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_reboot</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">TickType_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413espnow_reboot10TickType_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Reboot the chip after a delay. </p>
+<p>This API just starts an esp_timer and executes a reboot from that. Useful if you want to reboot after a delay, to allow other tasks to finish their operations (Eg. MQTT publish to indicate OTA success)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wait_ticks</strong> – <strong>[in]</strong> time in ticks after which the chip should reboot</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428espnow_reboot_unbroken_countv">
+<span id="_CPPv328espnow_reboot_unbroken_countv"></span><span id="_CPPv228espnow_reboot_unbroken_countv"></span><span id="espnow_reboot_unbroken_count__void"></span><span class="target" id="espnow__utils_8h_1a11d5fac8b7ae2e16b18964302ef1ec38"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_reboot_unbroken_count</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428espnow_reboot_unbroken_countv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the number of consecutive restarts. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>count </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425espnow_reboot_total_countv">
+<span id="_CPPv325espnow_reboot_total_countv"></span><span id="_CPPv225espnow_reboot_total_countv"></span><span id="espnow_reboot_total_count__void"></span><span class="target" id="espnow__utils_8h_1a84af40b2a6c81dee5b82a3f033c00b81"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_reboot_total_count</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425espnow_reboot_total_countv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the number of restarts. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>count </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426espnow_reboot_is_exceptionb">
+<span id="_CPPv326espnow_reboot_is_exceptionb"></span><span id="_CPPv226espnow_reboot_is_exceptionb"></span><span id="espnow_reboot_is_exception__b"></span><span class="target" id="espnow__utils_8h_1ade571e7111b49f603be7f7f3b8c3e250"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_reboot_is_exception</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">erase_coredump</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426espnow_reboot_is_exceptionb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Determine if the restart is caused by an exception. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>erase_coredump</strong> – <strong>[in]</strong> erase all coredump partition</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>true</p></li>
+<li><p>false </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_timesync_startv">
+<span id="_CPPv321espnow_timesync_startv"></span><span id="_CPPv221espnow_timesync_startv"></span><span id="espnow_timesync_start__void"></span><span class="target" id="espnow__utils_8h_1a7a48abb43a807c197628105888709986"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_timesync_start</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421espnow_timesync_startv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initialize time synchronization. </p>
+<p>This API initializes SNTP for time synchronization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>ESP_OK</p></li>
+<li><p>ESP_FAIL </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421espnow_timesync_checkv">
+<span id="_CPPv321espnow_timesync_checkv"></span><span id="_CPPv221espnow_timesync_checkv"></span><span id="espnow_timesync_check__void"></span><span class="target" id="espnow__utils_8h_1afcde454c271859718824175d1272eed1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_timesync_check</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421espnow_timesync_checkv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Check if current time is updated. </p>
+<p>This API checks if the current system time is updated against the reference time of 1-Jan-2020.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>true if time is updated</p></li>
+<li><p>false if time is not updated </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420espnow_timesync_wait8uint32_t">
+<span id="_CPPv320espnow_timesync_wait8uint32_t"></span><span id="_CPPv220espnow_timesync_wait8uint32_t"></span><span id="espnow_timesync_wait__uint32_t"></span><span class="target" id="espnow__utils_8h_1a5a104c7f69a384b313355e3780fedfb8"></span><span class="n"><span class="pre">esp_err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_timesync_wait</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wait_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420espnow_timesync_wait8uint32_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Wait for time synchronization. </p>
+<p>This API waits for the system time to be updated against the reference time of 1-Jan-2020. This is a blocking call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wait_ms</strong> – <strong>[in]</strong> number of ticks to wait for time synchronization.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>ESP_OK </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424espnow_print_system_info8uint32_t">
+<span id="_CPPv324espnow_print_system_info8uint32_t"></span><span id="_CPPv224espnow_print_system_info8uint32_t"></span><span id="espnow_print_system_info__uint32_t"></span><span class="target" id="espnow__utils_8h_1a1fc833d8944aaa058216b6b9621c4d6b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_print_system_info</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">interval_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424espnow_print_system_info8uint32_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Interval printing system information. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>interval_ms</strong> – <strong>[in]</strong> interval of printing system log information </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418espnow_mac_str2hexPKcP7uint8_t">
+<span id="_CPPv318espnow_mac_str2hexPKcP7uint8_t"></span><span id="_CPPv218espnow_mac_str2hexPKcP7uint8_t"></span><span id="espnow_mac_str2hex__cCP.uint8_tP"></span><span class="target" id="espnow__utils_8h_1a4b2a8611b1021300eddb3938b2619002"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">espnow_mac_str2hex</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mac_str</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mac_hex</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418espnow_mac_str2hexPKcP7uint8_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Convert MAC from string to hex. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mac_str</strong> – <strong>[in]</strong> mac address string in format MACSTR </p></li>
+<li><p><strong>mac_hex</strong> – <strong>[out]</strong> mac address array in hex</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>NULL: fail</p></li>
+<li><p>mac_hex: success </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="structures">
+<h3>Structures<a class="headerlink" href="#structures" title="Permalink to this headline"></a></h3>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420espnow_time_config_s">
+<span id="_CPPv320espnow_time_config_s"></span><span id="_CPPv220espnow_time_config_s"></span><span id="espnow_time_config_s"></span><span class="target" id="structespnow__time__config__s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_time_config_s</span></span></span><a class="headerlink" href="#_CPPv420espnow_time_config_s" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The SNTP server configuration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20espnow_time_config_s16sntp_server_nameE">
+<span id="_CPPv3N20espnow_time_config_s16sntp_server_nameE"></span><span id="_CPPv2N20espnow_time_config_s16sntp_server_nameE"></span><span id="espnow_time_config_s::sntp_server_name__cP"></span><span class="target" id="structespnow__time__config__s_1a1eaeb0a03b0c85379ee8cc463f586be7"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sntp_server_name</span></span></span><a class="headerlink" href="#_CPPv4N20espnow_time_config_s16sntp_server_nameE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>If not specified, then ‘CONFIG_ESP_SNTP_SERVER_NAME’ is used as the SNTP server. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="macros">
+<h3>Macros<a class="headerlink" href="#macros" title="Permalink to this headline"></a></h3>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERROR_RETURN">
+<span class="target" id="espnow__utils_8h_1aa8ba1eeda605bc9310025e310ebd5937"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERROR_RETURN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">con</span></span>, <span class="n"><span class="pre">err</span></span>, <span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESP_ERROR_RETURN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Macro which can be used to check the error code, and terminate the program in case the code is not ESP_OK. Prints the error code, error location, and the failed statement to serial output.</p>
+<p>Disabled if assertions are disabled. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERROR_ASSERT">
+<span class="target" id="espnow__utils_8h_1aeabde10a3daa2b64d9aa976c8be9d367"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERROR_ASSERT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">err</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESP_ERROR_ASSERT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Macro serves similar purpose as <code class="docutils literal notranslate"><span class="pre">assert</span></code>, except that it checks <code class="docutils literal notranslate"><span class="pre">esp_err_t</span></code> value rather than a <code class="docutils literal notranslate"><span class="pre">bool</span></code> condition. If the argument of <code class="docutils literal notranslate"><span class="pre">ESP_ERROR_ASSERT</span></code> is not equal <code class="docutils literal notranslate"><span class="pre">ESP_OK</span></code>, then an error message is printed on the console, and <code class="docutils literal notranslate"><span class="pre">abort()</span></code> is called. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">IDF</span> <span class="pre">monitor</span></code> is used, addresses in the backtrace will be converted to file names and line numbers.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>err</strong> – <strong>[in]</strong> [description] </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[description] </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERROR_GOTO">
+<span class="target" id="espnow__utils_8h_1aa4af1f85a21d4d8e55e3b6d117fcc280"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERROR_GOTO</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">con</span></span>, <span class="n"><span class="pre">lable</span></span>, <span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESP_ERROR_GOTO" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERROR_CONTINUE">
+<span class="target" id="espnow__utils_8h_1acb77e63e6f3772969e0b553b5d75ab73"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERROR_CONTINUE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">con</span></span>, <span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESP_ERROR_CONTINUE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_ERROR_BREAK">
+<span class="target" id="espnow__utils_8h_1af92b21af8b05695c3306594c84e8d74f"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_ERROR_BREAK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">con</span></span>, <span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESP_ERROR_BREAK" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ESP_PARAM_CHECK">
+<span class="target" id="espnow__utils_8h_1a2997b583f03c70d85d15149f67626ac7"></span><span class="sig-name descname"><span class="n"><span class="pre">ESP_PARAM_CHECK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">con</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ESP_PARAM_CHECK" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</section>
+<section id="type-definitions">
+<h3>Type Definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline"></a></h3>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv420espnow_time_config_t">
+<span id="_CPPv320espnow_time_config_t"></span><span id="_CPPv220espnow_time_config_t"></span><span id="espnow_time_config_t"></span><span class="target" id="espnow__utils_8h_1a242fde7235738ca1d99f39c4b9df2b16"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv420espnow_time_config_s" title="espnow_time_config_s"><span class="n"><span class="pre">espnow_time_config_s</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">espnow_time_config_t</span></span></span><a class="headerlink" href="#_CPPv420espnow_time_config_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The SNTP server configuration. </p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="espnow_storage.html" class="btn btn-neutral float-left" title="Storage API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - 2024, Espressif Systems (Shanghai) Co., Ltd.</p>
+  </div>
+
+  <ul class="footer">
+        <li>
+	    
+            
+            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/espressif/sphinx_idf_theme">theme</a>  based on <a href="https://github.com/readthedocs/sphinx_rtd_theme">Read the Docs Sphinx Theme</a>.
+         </li>
+
+  </ul> 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
